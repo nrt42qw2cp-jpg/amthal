@@ -1,57 +1,85 @@
-html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0a1133">
 <title>أمثال شعبية</title>
 <style>
-:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2118;--mut:#7a6c5a;--acc:#0f6b4f;--acc2:#e8f1ec;--warn:#9a5b10;--warn2:#f8ecd8;--bd:#e4d9c6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--card:#201d17;--ink:#f1e9da;--mut:#a89a85;--acc:#5fcf9f;--acc2:#1a2e26;--warn:#e8b567;--warn2:#33281a;--bd:#352f25}}
-:root[data-theme="dark"]{--bg:#15130f;--card:#201d17;--ink:#f1e9da;--mut:#a89a85;--acc:#5fcf9f;--acc2:#1a2e26;--warn:#e8b567;--warn2:#33281a;--bd:#352f25}
-html{scroll-padding-top:env(safe-area-inset-top,0px)}
+:root{--bg:#060a1c;--card:#0c1233;--card2:#111a47;--bd:#1f2c66;--ink:#e8ecff;--mut:#8f9bd0;--ind:#5b6bff;--grn:#34d6a3;--amb:#f6c453;--blu:#6a98ff;--gold:#f6c453;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6}
+body{margin:0;color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6;background:radial-gradient(900px 420px at 85% -5%,#1b2578 0%,transparent 62%),radial-gradient(700px 400px at 0% 30%,#12205a55 0%,transparent 60%),var(--bg);min-height:100vh}
+.hero{background:linear-gradient(180deg,#101a58,#0a1133);border-bottom:1px solid var(--bd);text-align:center;padding:18px 16px 20px;border-radius:0 0 26px 26px;box-shadow:0 10px 30px rgba(20,30,120,.35)}
+.hero .orn{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:10px;max-width:240px;margin:0 auto}
+.hero .orn i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.seal{width:58px;height:58px;color:var(--gold);display:block;margin:10px auto 4px;filter:drop-shadow(0 0 8px rgba(246,196,83,.45))}
+.nm{font-size:20px;font-weight:800;color:#fff;direction:ltr;letter-spacing:.7px}
+.role{font-size:13px;color:#b9c3f2;margin-top:2px}
+.tg{font-size:11.5px;color:var(--mut);margin-top:8px}
 .wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}
-h1{margin:0;font-size:28px;font-weight:800;color:var(--acc)}
-.sub{color:var(--mut);font-size:14px;margin:2px 0 14px}
-input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--ink);font:inherit;font-size:16px}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
-.chip{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
-.chip.on{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:700}
-.rnd{width:100%;margin:2px 0 14px;padding:11px;border:0;border-radius:12px;background:var(--acc2);color:var(--acc);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
-.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
-.card.hl{outline:2px solid var(--acc)}
-.ar{font-size:21px;font-weight:700;line-height:1.5}
-.tag{display:inline-block;font-size:12px;padding:1px 9px;border-radius:99px;background:var(--acc2);color:var(--acc);margin-bottom:8px}
-.en{direction:ltr;text-align:left;margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd);font-size:16px}
-.lbl{display:block;font-size:12px;color:var(--mut);direction:rtl;text-align:right;margin-bottom:2px}
-.nomatch .lbl{color:var(--warn)}
-.nomatch .en{background:var(--warn2);border-radius:10px;border-top:0;padding:10px;color:var(--ink)}
+h1{margin:0;font-size:27px;font-weight:800;color:#fff}
+h1:after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ind),var(--gold));margin-top:6px}
+.sub{color:var(--mut);font-size:14px;margin:6px 0 14px}
+input,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:#0a1030;color:var(--ink);font:inherit;font-size:16px;outline:0}
+input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,107,255,.25)}
+.sec{font-size:11.5px;letter-spacing:.5px;color:var(--mut);margin:14px 0 0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px}
+.chip{flex:none;border:1px solid var(--bd);background:#0a1030;color:var(--mut);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
+.chip b{color:var(--ink);font-weight:700;margin-inline-start:4px;opacity:.75}
+.chip.on{background:var(--ind);border-color:var(--ind);color:#fff;box-shadow:0 0 16px rgba(91,107,255,.45)}
+.chip.on b{color:#fff;opacity:1}
+.rnd{width:100%;margin:2px 0 14px;padding:11px;border:0;border-radius:12px;background:linear-gradient(135deg,#4f5bff,#7b5bff);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 16px rgba(91,107,255,.35)}
 .cnt{color:var(--mut);font-size:13px;margin:0 0 10px}
+.k-ex{--c:var(--grn)}.k-cl{--c:var(--amb)}.k-no{--c:var(--blu)}
+.card{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--bd);border-inline-start:3px solid var(--c);border-radius:14px;padding:14px 16px;margin-bottom:12px}
+.card.hl{box-shadow:0 0 0 1px var(--ind),0 0 26px rgba(91,107,255,.4)}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.tag{font-size:12px;color:var(--mut)}
+.st{font-size:12px;color:var(--c);border:1px solid var(--c);border-radius:6px;padding:0 8px;background:rgba(255,255,255,.03)}
+.ar{font-size:21px;font-weight:700;line-height:1.5;color:#fff}
+.en{direction:ltr;text-align:left;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd);font-size:16px;color:#d9e0ff}
+.lbl{display:block;font-size:11.5px;color:var(--c);direction:rtl;text-align:right;margin-bottom:3px}
+.mn{margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd);font-size:14px;color:var(--mut)}
 .empty{text-align:center;color:var(--mut);padding:30px}
+.lg{margin-top:18px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:12px 14px}
+.lgt{font-size:11.5px;letter-spacing:.5px;color:var(--mut);margin-bottom:8px}
+.lgi{display:flex;gap:10px;align-items:flex-start;color:var(--c);margin:6px 0;font-size:14px}
+.lgi small{display:block;color:var(--mut);font-size:12.5px}
 .adm{width:100%;margin-top:18px;padding:10px;border:1px dashed var(--bd);border-radius:12px;background:transparent;color:var(--mut);font:inherit;font-size:14px;cursor:pointer}
-.panel{margin-top:10px;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:14px}
+.panel{margin-top:10px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:14px}
 .panel label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
-select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--ink);font:inherit;font-size:16px}
 </style>
 </head>
 <body>
+<header class="hero">
+<div class="orn"><i></i>◆ ◆ ◆<i></i></div>
+<svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width=".7" stroke-dasharray="2 3"/><path d="M40 21v38" stroke="currentColor" stroke-width=".8" opacity=".45"/><text x="28" y="50" font-size="26" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Tajawal,system-ui,sans-serif">ع</text><text x="53" y="49" font-size="24" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Georgia,serif">A</text></svg>
+<div class="nm">Abdulaziz Alabduly</div>
+<div class="role">مترجم لغة إنجليزية · English Language Translator</div>
+<div class="tg">جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues</div>
+</header>
 <div class="wrap">
 <h1>أمثال شعبية</h1>
 <p class="sub">أمثال سعودية وخليجية مع مرادفها بالإنجليزي أو معناها</p>
 <input id="q" type="search" placeholder="ابحث بالعربي أو الإنجليزي…">
+<div class="sec">تصفية حسب النوع</div>
 <div class="chips" id="chips"></div>
 <button class="rnd" id="rnd">🎲 مثل عشوائي</button>
-<p class="cnt" id="cnt">35 مثل</p>
+<p class="cnt" id="cnt">70 مثل</p>
 <div id="list"><!--S--><!--E--></div>
+<div class="lg"><div class="lgt">دليل الألوان</div>
+<div class="lgi k-ex"><span>✓</span><div><b>مطابق</b><small>مرادف إنجليزي يطابق المعنى والصياغة تقريباً</small></div></div>
+<div class="lgi k-cl"><span>⚠</span><div><b>قريب</b><small>أقرب مرادف، لكنه ليس مطابقاً تماماً، فيُعرض معه المعنى</small></div></div>
+<div class="lgi k-no"><span>ⓘ</span><div><b>معنى فقط</b><small>ما له مرادف إنجليزي، فنكتفي بشرح معناه</small></div></div>
+</div>
 <button class="adm" id="adm">🔒 إضافة مثل (للمالك فقط)</button>
 <div class="panel" id="panel" hidden>
 <label>كلمة المرور</label><input id="pw" type="password" autocomplete="off">
 <div id="tkw"><label>رمز GitHub (أول مرة فقط)</label><input id="tk" type="password" autocomplete="off" placeholder="github_pat_..."></div>
 <label>المثل بالعربي</label><input id="nar" placeholder="مثال: الأفعال أقوى من الكلام">
-<label>المرادف بالإنجليزي (اتركه فاضي إذا ما له مرادف)</label><input id="nen" dir="ltr">
-<label>المعنى بالإنجليزي (إذا ما له مرادف)</label><input id="nmn" dir="ltr">
+<label>المرادف بالإنجليزي (ابدأه بـ ≈ إذا كان قريباً وغير مطابق، واتركه فاضي إذا ما له مرادف)</label><input id="nen" dir="ltr">
+<label>المعنى بالإنجليزي (مطلوب إذا ما له مرادف)</label><input id="nmn" dir="ltr">
 <label>النوع</label><select id="nty"><option value="s">سعودي / خليجي</option><option value="g">شائع</option></select>
 <button class="rnd" id="sv">حفظ ونشر</button>
 <p class="cnt" id="msg"></p>
@@ -60,59 +88,99 @@ select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--bd);bac
 <script>
 // [عربي, مرادف إنجليزي (أو فاضي), المعنى بالإنجليزي, نوع: s سعودي/خليجي | g عام]
 const D=[
-["اللي ما يعرف الصقر يشويه","","Someone who doesn't recognize the value of something treats it carelessly or ruins it.","s"],
-["اللي يخاف من الذيب ما يرعى الغنم","If you can't stand the heat, get out of the kitchen.","","s"],
-["اللي ما يعرف يقول عدس","","A clueless person blurts out a random answer instead of admitting he doesn't know.","s"],
-["اللي ما له كبير يشتري له كبير","","Everyone needs an elder or wise guide; if you don't have one, find one.","s"],
-["ضرب الحبيب زبيب","","Criticism or even a slap from someone who loves you is easy to take, like eating raisins.","s"],
-["الجار قبل الدار","Choose your neighbors before you choose your house.","","s"],
-["الجود من الموجود","","Be generous with whatever you have; giving what's available is enough.","s"],
-["الصاحب ساحب","A man is known by the company he keeps.","","s"],
-["ما يحك جلدك مثل ظفرك","If you want something done right, do it yourself.","","s"],
-["اللي ما يطول العنب حامض يقول عنه","Sour grapes.","","s"],
-["اللي يبي الورد يتحمل الشوك","No pain, no gain. / There's no rose without a thorn.","","s"],
-["جاء يكحلها عماها","The cure is worse than the disease.","","s"],
-["العين ما تعلى على الحاجب","","You can't rise above your superiors; know your place.","s"],
-["الأفعال أقوى من الكلام","Actions speak louder than words.","","g"],
-["كثرة الطباخين تحرق الطبخة","Too many cooks spoil the broth.","","s"],
-["مد رجولك على قد لحافك","Cut your coat according to your cloth.","","s"],
-["الطيور على أشكالها تقع","Birds of a feather flock together.","","g"],
-["يا ما تحت السواهي دواهي","Still waters run deep.","","g"],
-["الحاجة أم الاختراع","Necessity is the mother of invention.","","g"],
-["في التأني السلامة وفي العجلة الندامة","Haste makes waste.","","g"],
-["لا تقول فول حتى يصير في المكيول","Don't count your chickens before they hatch.","","s"],
-["ما كل ما يلمع ذهب","All that glitters is not gold.","","g"],
-["القرد في عين أمه غزال","Every crow thinks its own chick is the whitest. / Beauty is in the eye of the beholder.","","g"],
-["حبل الكذب قصير","Lies have short legs. / A lie has no legs.","","g"],
-["عصفور في اليد خير من عشرة على الشجرة","A bird in the hand is worth two in the bush.","","g"],
-["الحر تكفيه الإشارة","A word to the wise is enough.","","g"],
-["البعيد عن العين بعيد عن القلب","Out of sight, out of mind.","","g"],
-["الوقت كالسيف إن لم تقطعه قطعك","Time and tide wait for no man.","","g"],
-["العلم في الصغر كالنقش على الحجر","As the twig is bent, so grows the tree.","","g"],
-["من جدّ وجد ومن زرع حصد","You reap what you sow.","","g"],
-["الدنيا دوّارة","What goes around comes around.","","s"],
-["خير الأمور أوسطها","Moderation in all things. / The middle path is best.","","g"],
-["اسأل مجرّب ولا تسأل طبيب","Experience is the best teacher.","","g"],
-["المكتوب على الجبين لازم تشوفه العين","What will be, will be. (Fate cannot be avoided.)","","g"],
-["الصبر مفتاح الفرج","Patience is a virtue. / Good things come to those who wait.","","g"]
+["اللي ما يعرف الصقر يشويه", "", "Someone who doesn't recognize the value of something treats it carelessly or ruins it.", "s"],
+["اللي يخاف من الذيب ما يرعى الغنم", "If you can't stand the heat, get out of the kitchen.", "", "s"],
+["اللي ما يعرف يقول عدس", "", "A clueless person blurts out a random answer instead of admitting he doesn't know.", "s"],
+["اللي ما له كبير يشتري له كبير", "", "Everyone needs an elder or wise guide; if you don't have one, find one.", "s"],
+["ضرب الحبيب زبيب", "", "Criticism, or even a slap, from someone who loves you is easy to take, like eating raisins.", "s"],
+["الجار قبل الدار", "", "Choose your neighbor before you choose your house.", "s"],
+["الجود من الموجود", "", "Be generous with whatever you have; giving what is available is enough.", "s"],
+["الصاحب ساحب", "A man is known by the company he keeps.", "", "s"],
+["ما يحك جلدك مثل ظفرك", "If you want something done right, do it yourself.", "", "s"],
+["اللي ما يطول العنب حامض يقول عنه", "Sour grapes.", "", "s"],
+["اللي يبي الورد يتحمل الشوك", "No pain, no gain. / There's no rose without a thorn.", "", "s"],
+["جاء يكحلها عماها", "≈ The cure is worse than the disease.", "He tried to fix it and made it worse.", "s"],
+["العين ما تعلى على الحاجب", "", "You can't rise above your superiors; know your place.", "s"],
+["الأفعال أقوى من الكلام", "Actions speak louder than words.", "", "g"],
+["كثرة الطباخين تحرق الطبخة", "Too many cooks spoil the broth.", "", "s"],
+["مد رجولك على قد لحافك", "Cut your coat according to your cloth.", "", "s"],
+["الطيور على أشكالها تقع", "Birds of a feather flock together.", "", "g"],
+["يا ما تحت السواهي دواهي", "", "A calm surface can hide trouble underneath.", "g"],
+["الحاجة أم الاختراع", "Necessity is the mother of invention.", "", "g"],
+["في التأني السلامة وفي العجلة الندامة", "Haste makes waste.", "", "g"],
+["لا تقول فول حتى يصير في المكيول", "Don't count your chickens before they hatch.", "", "s"],
+["ما كل ما يلمع ذهب", "All that glitters is not gold.", "", "g"],
+["القرد في عين أمه غزال", "", "Parents see their own children as the most beautiful, whatever others think.", "g"],
+["حبل الكذب قصير", "", "Lies don't last; they are soon exposed.", "g"],
+["عصفور في اليد خير من عشرة على الشجرة", "A bird in the hand is worth two in the bush.", "", "g"],
+["الحر تكفيه الإشارة", "A word to the wise is enough.", "", "g"],
+["البعيد عن العين بعيد عن القلب", "Out of sight, out of mind.", "", "g"],
+["الوقت كالسيف إن لم تقطعه قطعك", "≈ Time and tide wait for no man.", "Use your time well, or it works against you.", "g"],
+["العلم في الصغر كالنقش على الحجر", "≈ What is learned in the cradle is carried to the grave.", "What you learn when young stays with you, like carving on stone.", "g"],
+["من جدّ وجد ومن زرع حصد", "≈ Hard work pays off.", "Whoever strives finds, and whoever sows reaps.", "g"],
+["الدنيا دوّارة", "", "Life is a turning wheel; fortunes rise and fall.", "s"],
+["خير الأمور أوسطها", "Moderation in all things.", "", "g"],
+["اسأل مجرّب ولا تسأل طبيب", "≈ Experience is the best teacher.", "Ask someone who has been through it rather than an expert.", "g"],
+["المكتوب على الجبين لازم تشوفه العين", "What will be, will be.", "", "g"],
+["الصبر مفتاح الفرج", "≈ Good things come to those who wait.", "Patience is the key to relief.", "g"],
+["درهم وقاية خير من قنطار علاج", "An ounce of prevention is worth a pound of cure.", "", "g"],
+["إذا كان الكلام من فضة فالسكوت من ذهب", "Speech is silver, silence is golden.", "", "g"],
+["الصديق وقت الضيق", "A friend in need is a friend indeed.", "", "g"],
+["الطمع يقل ما جمع", "Grasp all, lose all.", "", "g"],
+["ابن البط عوام", "Like father, like son. / A chip off the old block.", "", "g"],
+["من يزرع الشوك لا يحصد العنب", "As you sow, so shall you reap.", "", "g"],
+["قل خيراً أو اصمت", "If you can't say something nice, don't say anything at all.", "", "g"],
+["كما تدين تدان", "What goes around comes around.", "", "g"],
+["رب ضارة نافعة", "Every cloud has a silver lining.", "", "g"],
+["مصائب قوم عند قوم فوائد", "One man's loss is another man's gain.", "", "g"],
+["لا تؤجل عمل اليوم إلى الغد", "Never put off till tomorrow what you can do today.", "", "g"],
+["اللي فات مات", "Let bygones be bygones.", "", "g"],
+["الغريق يتعلق بقشة", "A drowning man will clutch at a straw.", "", "g"],
+["السكوت علامة الرضا", "Silence gives consent.", "", "g"],
+["في بلاد العميان الأعور ملك", "In the land of the blind, the one-eyed man is king.", "", "g"],
+["عادت حليمة لعادتها القديمة", "A leopard can't change its spots.", "", "g"],
+["من شب على شيء شاب عليه", "≈ Old habits die hard.", "Whatever a person grows up doing stays with them in old age.", "g"],
+["إن كنت كذوباً فكن ذكوراً", "A liar needs a good memory.", "", "g"],
+["من كان بيته من زجاج فلا يرمي الناس بالحجارة", "People who live in glass houses shouldn't throw stones.", "", "g"],
+["القرش الأبيض ينفع في اليوم الأسود", "Save for a rainy day.", "", "g"],
+["الأقربون أولى بالمعروف", "Charity begins at home.", "", "g"],
+["من حفر حفرة لأخيه وقع فيها", "Whoever digs a pit will fall into it.", "", "g"],
+["الشمس لا تغطى بغربال", "≈ The truth will out.", "You can't hide the sun with a sieve; the truth cannot be concealed.", "g"],
+["ما بعد الضيق إلا الفرج", "≈ It's always darkest before the dawn.", "After hardship comes relief.", "g"],
+["يد واحدة ما تصفق", "≈ Many hands make light work.", "One hand can't clap; big things need teamwork.", "g"],
+["اللي يعيش ياما يشوف", "≈ Live and learn.", "Whoever lives long sees many things.", "g"],
+["إذا هبت رياحك فاغتنمها", "≈ Make hay while the sun shines.", "When your winds blow, seize the chance.", "g"],
+["لكل مقام مقال", "≈ There's a time and a place for everything.", "Every situation calls for its own words.", "g"],
+["لكل جواد كبوة", "≈ Even Homer sometimes nods.", "Even the best horse stumbles; everyone slips up.", "g"],
+["ما كل بيضاء شحمة ولا كل سوداء فحمة", "≈ Don't judge a book by its cover.", "Not every white thing is fat, nor every black thing coal; looks can deceive.", "g"],
+["الأعمال بالنيات", "≈ It's the thought that counts.", "Deeds are judged by the intentions behind them.", "g"],
+["القافلة تسير والكلاب تنبح", "", "Ignore the critics and keep moving forward.", "g"],
+["اطلب العلم ولو في الصين", "", "Seek knowledge even if you must travel as far as China.", "g"],
+["أنا وأخي على ابن عمي وأنا وابن عمي على الغريب", "", "Loyalty goes to the closest bond first: me and my brother against my cousin, me and my cousin against the stranger.", "s"],
+["ضربني وبكى وسبقني واشتكى", "", "Someone does wrong, then plays the victim and complains first.", "g"]
 ];
 let cat='all';
-const cats=[['all','الكل'],['s','سعودي / خليجي'],['eq','لها مرادف'],['no','بدون مرادف']];
 const $=id=>document.getElementById(id);
-$('chips').innerHTML=cats.map(c=>`<button class="chip${c[0]==='all'?' on':''}" data-c="${c[0]}">${c[1]}</button>`).join('');
-$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;[...$('chips').children].forEach(x=>x.classList.toggle('on',x===b));render()};
+const kind=d=>!d[1]?'no':d[1][0]==='≈'?'cl':'ex';
+const cats=[['all','الكل'],['s','سعودي / خليجي'],['ex','مطابق'],['cl','قريب'],['no','معنى فقط']];
+const hit=(d,c)=>c==='all'||(c==='s'?d[3]==='s':kind(d)===c);
+function drawChips(){$('chips').innerHTML=cats.map(c=>`<button class="chip${c[0]===cat?' on':''}" data-c="${c[0]}">${c[1]}<b>${D.filter(d=>hit(d,c[0])).length}</b></button>`).join('')}
+$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;render()};
 $('q').oninput=()=>render();
 function norm(s){return s.replace(/[\u064B-\u065F\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase()}
 function html(d,hl){
- const eq=!!d[1];
- return `<div class="card${eq?'':' nomatch'}${hl?' hl':''}"><span class="tag">${d[3]==='s'?'سعودي / خليجي':'شائع'}</span><div class="ar">${d[0]}</div><div class="en"><span class="lbl">${eq?'المرادف بالإنجليزي':'ما له مرادف — المعنى'}</span>${eq?d[1]:d[2]}</div></div>`}
+ const k=kind(d);
+ const st={ex:['✓','مطابق','المرادف بالإنجليزي'],cl:['⚠','قريب','أقرب مرادف'],no:['ⓘ','معنى فقط','ما له مرادف — المعنى']}[k];
+ const body=k==='no'?d[2]:k==='cl'?d[1].slice(1).trim()+(d[2]?'<div class="mn"><span class="lbl">المعنى</span>'+d[2]+'</div>':''):d[1];
+ return `<div class="card k-${k}${hl?' hl':''}"><div class="top"><span class="tag">${d[3]==='s'?'سعودي / خليجي':'شائع'}</span><span class="st">${st[0]} ${st[1]}</span></div><div class="ar">${d[0]}</div><div class="en"><span class="lbl">${st[2]}</span>${body}</div></div>`}
 function render(){
  const q=norm($('q').value.trim());
- const r=D.filter(d=>(cat==='all'||(cat==='s'&&d[3]==='s')||(cat==='eq'&&d[1])||(cat==='no'&&!d[1]))&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
+ drawChips();
+ const r=D.filter(d=>hit(d,cat)&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
  $('cnt').textContent=r.length+' مثل';
  $('list').innerHTML=r.length?r.map(d=>html(d)).join(''):'<div class="empty">ما لقينا نتيجة</div>';
 }
-$('rnd').onclick=()=>{$('q').value='';cat='all';[...$('chips').children].forEach((x,i)=>x.classList.toggle('on',i===0));
+$('rnd').onclick=()=>{$('q').value='';cat='all';drawChips();
  const d=D[Math.floor(Math.random()*D.length)];$('cnt').textContent='مثل عشوائي';$('list').innerHTML=html(d,true)};
 render();
 
@@ -143,7 +211,7 @@ $('sv').onclick=async()=>{
   let f=decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
   const a=f.indexOf('const D=[')+8,b=f.indexOf('];\nlet cat')+1;
   const arr=JSON.parse(f.slice(a,b));
-  arr.push([ar,en,en?'':mn,ty]);
+  arr.push([ar,en,mn,ty]);
   f=f.slice(0,a)+'[\n'+arr.map(x=>JSON.stringify(x)).join(',\n')+'\n]'+f.slice(b);
   const i=f.indexOf('<!--S-->')+8,k=f.indexOf('<!--E-->');
   f=f.slice(0,i)+arr.map(x=>html(x)).join('')+f.slice(k);
@@ -152,7 +220,7 @@ $('sv').onclick=async()=>{
   f=f.slice(0,v1)+vault+f.slice(v2);
   const p=await fetch(api,{method:'PUT',headers:H,body:JSON.stringify({message:'add proverb',content:btoa(unescape(encodeURIComponent(f))),sha:j.sha})});
   if(!p.ok){msg('فشل الحفظ ('+p.status+')');return}
-  VAULT=vault;D.push([ar,en,en?'':mn,ty]);
+  VAULT=vault;D.push([ar,en,mn,ty]);
   ['nar','nen','nmn','tk'].forEach(x=>$(x).value='');$('tkw').hidden=true;
   render();msg('تم ✅ يظهر للجميع بعد دقيقة تقريباً');
  }catch(e){msg('صار خطأ: '+e.message)}
