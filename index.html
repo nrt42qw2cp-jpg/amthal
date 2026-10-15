@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أمثال شعبية</title>
+<style>
+:root{--bg:#f6f1e7;--card:#fffdf8;--ink:#2a2118;--mut:#7a6c5a;--acc:#0f6b4f;--acc2:#e8f1ec;--warn:#9a5b10;--warn2:#f8ecd8;--bd:#e4d9c6;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15130f;--card:#201d17;--ink:#f1e9da;--mut:#a89a85;--acc:#5fcf9f;--acc2:#1a2e26;--warn:#e8b567;--warn2:#33281a;--bd:#352f25}}
+:root[data-theme="dark"]{--bg:#15130f;--card:#201d17;--ink:#f1e9da;--mut:#a89a85;--acc:#5fcf9f;--acc2:#1a2e26;--warn:#e8b567;--warn2:#33281a;--bd:#352f25}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}
+h1{margin:0;font-size:28px;font-weight:800;color:var(--acc)}
+.sub{color:var(--mut);font-size:14px;margin:2px 0 14px}
+input{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--ink);font:inherit;font-size:16px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:12px 0}
+.chip{flex:none;border:1px solid var(--bd);background:var(--card);color:var(--ink);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
+.chip.on{background:var(--acc);color:var(--bg);border-color:var(--acc);font-weight:700}
+.rnd{width:100%;margin:2px 0 14px;padding:11px;border:0;border-radius:12px;background:var(--acc2);color:var(--acc);font:inherit;font-weight:700;font-size:15px;cursor:pointer}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px;margin-bottom:12px}
+.card.hl{outline:2px solid var(--acc)}
+.ar{font-size:21px;font-weight:700;line-height:1.5}
+.tag{display:inline-block;font-size:12px;padding:1px 9px;border-radius:99px;background:var(--acc2);color:var(--acc);margin-bottom:8px}
+.en{direction:ltr;text-align:left;margin-top:10px;padding-top:10px;border-top:1px dashed var(--bd);font-size:16px}
+.lbl{display:block;font-size:12px;color:var(--mut);direction:rtl;text-align:right;margin-bottom:2px}
+.nomatch .lbl{color:var(--warn)}
+.nomatch .en{background:var(--warn2);border-radius:10px;border-top:0;padding:10px;color:var(--ink)}
+.cnt{color:var(--mut);font-size:13px;margin:0 0 10px}
+.empty{text-align:center;color:var(--mut);padding:30px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>أمثال شعبية</h1>
+<p class="sub">أمثال سعودية وخليجية مع مرادفها بالإنجليزي أو معناها</p>
+<input id="q" type="search" placeholder="ابحث بالعربي أو الإنجليزي…">
+<div class="chips" id="chips"></div><noscript><p class="sub">هذي المعاينة ما تدعم البحث والفلاتر. افتح الملف في Safari أو Chrome عشان تشتغل كل الميزات.</p></noscript>
+<button class="rnd" id="rnd">🎲 مثل عشوائي</button>
+<p class="cnt" id="cnt">35 مثل</p>
+<div id="list"><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">اللي ما يعرف الصقر يشويه</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>Someone who doesn't recognize the value of something treats it carelessly or ruins it.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">اللي يخاف من الذيب ما يرعى الغنم</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>If you can't stand the heat, get out of the kitchen.</div></div><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">اللي ما يعرف يقول عدس</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>A clueless person blurts out a random answer instead of admitting he doesn't know.</div></div><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">اللي ما له كبير يشتري له كبير</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>Everyone needs an elder or wise guide; if you don't have one, find one.</div></div><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">ضرب الحبيب زبيب</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>Criticism or even a slap from someone who loves you is easy to take, like eating raisins.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">الجار قبل الدار</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Choose your neighbors before you choose your house.</div></div><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">الجود من الموجود</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>Be generous with whatever you have; giving what's available is enough.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">الصاحب ساحب</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>A man is known by the company he keeps.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">ما يحك جلدك مثل ظفرك</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>If you want something done right, do it yourself.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">اللي ما يطول العنب حامض يقول عنه</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Sour grapes.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">اللي يبي الورد يتحمل الشوك</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>No pain, no gain. / There's no rose without a thorn.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">جاء يكحلها عماها</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>The cure is worse than the disease.</div></div><div class="card nomatch"><span class="tag">سعودي / خليجي</span><div class="ar">العين ما تعلى على الحاجب</div><div class="en"><span class="lbl">ما له مرادف — المعنى</span>You can't rise above your superiors; know your place.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الأفعال أقوى من الكلام</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Actions speak louder than words.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">كثرة الطباخين تحرق الطبخة</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Too many cooks spoil the broth.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">مد رجولك على قد لحافك</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Cut your coat according to your cloth.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الطيور على أشكالها تقع</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Birds of a feather flock together.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">يا ما تحت السواهي دواهي</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Still waters run deep.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الحاجة أم الاختراع</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Necessity is the mother of invention.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">في التأني السلامة وفي العجلة الندامة</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Haste makes waste.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">لا تقول فول حتى يصير في المكيول</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Don't count your chickens before they hatch.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">ما كل ما يلمع ذهب</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>All that glitters is not gold.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">القرد في عين أمه غزال</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Every crow thinks its own chick is the whitest. / Beauty is in the eye of the beholder.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">حبل الكذب قصير</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Lies have short legs. / A lie has no legs.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">عصفور في اليد خير من عشرة على الشجرة</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>A bird in the hand is worth two in the bush.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الحر تكفيه الإشارة</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>A word to the wise is enough.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">البعيد عن العين بعيد عن القلب</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Out of sight, out of mind.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الوقت كالسيف إن لم تقطعه قطعك</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Time and tide wait for no man.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">العلم في الصغر كالنقش على الحجر</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>As the twig is bent, so grows the tree.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">من جدّ وجد ومن زرع حصد</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>You reap what you sow.</div></div><div class="card"><span class="tag">سعودي / خليجي</span><div class="ar">الدنيا دوّارة</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>What goes around comes around.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">خير الأمور أوسطها</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Moderation in all things. / The middle path is best.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">اسأل مجرّب ولا تسأل طبيب</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Experience is the best teacher.</div></div><div class="card"><span class="tag">شائع</span><div class="ar">المكتوب على الجبين لازم تشوفه العين</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>What will be, will be. (Fate cannot be avoided.)</div></div><div class="card"><span class="tag">شائع</span><div class="ar">الصبر مفتاح الفرج</div><div class="en"><span class="lbl">المرادف بالإنجليزي</span>Patience is a virtue. / Good things come to those who wait.</div></div></div>
+</div>
+<script>
+// [عربي, مرادف إنجليزي (أو فاضي), المعنى بالإنجليزي, نوع: s سعودي/خليجي | g عام]
+const D=[
+["اللي ما يعرف الصقر يشويه","","Someone who doesn't recognize the value of something treats it carelessly or ruins it.","s"],
+["اللي يخاف من الذيب ما يرعى الغنم","If you can't stand the heat, get out of the kitchen.","","s"],
+["اللي ما يعرف يقول عدس","","A clueless person blurts out a random answer instead of admitting he doesn't know.","s"],
+["اللي ما له كبير يشتري له كبير","","Everyone needs an elder or wise guide; if you don't have one, find one.","s"],
+["ضرب الحبيب زبيب","","Criticism or even a slap from someone who loves you is easy to take, like eating raisins.","s"],
+["الجار قبل الدار","Choose your neighbors before you choose your house.","","s"],
+["الجود من الموجود","","Be generous with whatever you have; giving what's available is enough.","s"],
+["الصاحب ساحب","A man is known by the company he keeps.","","s"],
+["ما يحك جلدك مثل ظفرك","If you want something done right, do it yourself.","","s"],
+["اللي ما يطول العنب حامض يقول عنه","Sour grapes.","","s"],
+["اللي يبي الورد يتحمل الشوك","No pain, no gain. / There's no rose without a thorn.","","s"],
+["جاء يكحلها عماها","The cure is worse than the disease.","","s"],
+["العين ما تعلى على الحاجب","","You can't rise above your superiors; know your place.","s"],
+["الأفعال أقوى من الكلام","Actions speak louder than words.","","g"],
+["كثرة الطباخين تحرق الطبخة","Too many cooks spoil the broth.","","s"],
+["مد رجولك على قد لحافك","Cut your coat according to your cloth.","","s"],
+["الطيور على أشكالها تقع","Birds of a feather flock together.","","g"],
+["يا ما تحت السواهي دواهي","Still waters run deep.","","g"],
+["الحاجة أم الاختراع","Necessity is the mother of invention.","","g"],
+["في التأني السلامة وفي العجلة الندامة","Haste makes waste.","","g"],
+["لا تقول فول حتى يصير في المكيول","Don't count your chickens before they hatch.","","s"],
+["ما كل ما يلمع ذهب","All that glitters is not gold.","","g"],
+["القرد في عين أمه غزال","Every crow thinks its own chick is the whitest. / Beauty is in the eye of the beholder.","","g"],
+["حبل الكذب قصير","Lies have short legs. / A lie has no legs.","","g"],
+["عصفور في اليد خير من عشرة على الشجرة","A bird in the hand is worth two in the bush.","","g"],
+["الحر تكفيه الإشارة","A word to the wise is enough.","","g"],
+["البعيد عن العين بعيد عن القلب","Out of sight, out of mind.","","g"],
+["الوقت كالسيف إن لم تقطعه قطعك","Time and tide wait for no man.","","g"],
+["العلم في الصغر كالنقش على الحجر","As the twig is bent, so grows the tree.","","g"],
+["من جدّ وجد ومن زرع حصد","You reap what you sow.","","g"],
+["الدنيا دوّارة","What goes around comes around.","","s"],
+["خير الأمور أوسطها","Moderation in all things. / The middle path is best.","","g"],
+["اسأل مجرّب ولا تسأل طبيب","Experience is the best teacher.","","g"],
+["المكتوب على الجبين لازم تشوفه العين","What will be, will be. (Fate cannot be avoided.)","","g"],
+["الصبر مفتاح الفرج","Patience is a virtue. / Good things come to those who wait.","","g"]
+];
+let cat='all';
+const cats=[['all','الكل'],['s','سعودي / خليجي'],['eq','لها مرادف'],['no','بدون مرادف']];
+const $=id=>document.getElementById(id);
+$('chips').innerHTML=cats.map(c=>`<button class="chip${c[0]==='all'?' on':''}" data-c="${c[0]}">${c[1]}</button>`).join('');
+$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;[...$('chips').children].forEach(x=>x.classList.toggle('on',x===b));render()};
+$('q').oninput=()=>render();
+function norm(s){return s.replace(/[\u064B-\u065F\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase()}
+function html(d,hl){
+ const eq=!!d[1];
+ return `<div class="card${eq?'':' nomatch'}${hl?' hl':''}"><span class="tag">${d[3]==='s'?'سعودي / خليجي':'شائع'}</span><div class="ar">${d[0]}</div><div class="en"><span class="lbl">${eq?'المرادف بالإنجليزي':'ما له مرادف — المعنى'}</span>${eq?d[1]:d[2]}</div></div>`}
+function render(){
+ const q=norm($('q').value.trim());
+ const r=D.filter(d=>(cat==='all'||(cat==='s'&&d[3]==='s')||(cat==='eq'&&d[1])||(cat==='no'&&!d[1]))&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
+ $('cnt').textContent=r.length+' مثل';
+ $('list').innerHTML=r.length?r.map(d=>html(d)).join(''):'<div class="empty">ما لقينا نتيجة</div>';
+}
+$('rnd').onclick=()=>{$('q').value='';cat='all';[...$('chips').children].forEach((x,i)=>x.classList.toggle('on',i===0));
+ const d=D[Math.floor(Math.random()*D.length)];$('cnt').textContent='مثل عشوائي';$('list').innerHTML=html(d,true)};
+render();
+</script>
+</body>
+</html>
