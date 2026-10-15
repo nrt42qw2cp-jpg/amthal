@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0a1133">
-<title>أمثال شعبية</title>
+<title>قاموس الأمثال</title>
 <style>
 :root{--bg:#060a1c;--card:#0c1233;--card2:#111a47;--bd:#1f2c66;--ink:#e8ecff;--mut:#8f9bd0;--ind:#5b6bff;--grn:#34d6a3;--amb:#f6c453;--blu:#6a98ff;--gold:#f6c453;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
@@ -25,10 +25,8 @@ input,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid va
 input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,107,255,.25)}
 .sec{font-size:11.5px;letter-spacing:.5px;color:var(--mut);margin:14px 0 0}
 .chips{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px}
-.chip{flex:none;border:1px solid var(--bd);background:#0a1030;color:var(--mut);padding:7px 14px;border-radius:99px;font:inherit;font-size:14px;cursor:pointer}
-.chip b{color:var(--ink);font-weight:700;margin-inline-start:4px;opacity:.75}
+.chip{flex:none;min-width:40px;text-align:center;border:1px solid var(--bd);background:#0a1030;color:var(--mut);padding:7px 12px;border-radius:99px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
 .chip.on{background:var(--ind);border-color:var(--ind);color:#fff;box-shadow:0 0 16px rgba(91,107,255,.45)}
-.chip.on b{color:#fff;opacity:1}
 .rnd{width:100%;margin:2px 0 14px;padding:11px;border:0;border-radius:12px;background:linear-gradient(135deg,#4f5bff,#7b5bff);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 16px rgba(91,107,255,.35)}
 .cnt{color:var(--mut);font-size:13px;margin:0 0 10px}
 .k-ex{--c:var(--grn)}.k-cl{--c:var(--amb)}.k-no{--c:var(--blu)}
@@ -49,6 +47,7 @@ input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,10
 .adm{width:100%;margin-top:18px;padding:10px;border:1px dashed var(--bd);border-radius:12px;background:transparent;color:var(--mut);font:inherit;font-size:14px;cursor:pointer}
 .panel{margin-top:10px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:14px}
 .panel label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
+.lh{font-size:28px;font-weight:800;color:var(--gold);margin:20px 2px 10px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
 </style>
 </head>
 <body>
@@ -60,10 +59,10 @@ input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,10
 <div class="tg">جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues</div>
 </header>
 <div class="wrap">
-<h1>أمثال شعبية</h1>
-<p class="sub">أمثال سعودية وخليجية مع مرادفها بالإنجليزي أو معناها</p>
+<h1>قاموس الأمثال</h1>
+<p class="sub">قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه</p>
 <input id="q" type="search" placeholder="ابحث بالعربي أو الإنجليزي…">
-<div class="sec">تصفية حسب النوع</div>
+<div class="sec">الفهرس الأبجدي</div>
 <div class="chips" id="chips"></div>
 <button class="rnd" id="rnd">🎲 مثل عشوائي</button>
 <p class="cnt" id="cnt">70 مثل</p>
@@ -159,14 +158,17 @@ const D=[
 ["أنا وأخي على ابن عمي وأنا وابن عمي على الغريب", "", "Loyalty goes to the closest bond first: me and my brother against my cousin, me and my cousin against the stranger.", "s"],
 ["ضربني وبكى وسبقني واشتكى", "", "Someone does wrong, then plays the victim and complains first.", "g"]
 ];
-let cat='all';
+let L='all';
 const $=id=>document.getElementById(id);
 const kind=d=>!d[1]?'no':d[1][0]==='≈'?'cl':'ex';
-const cats=[['all','الكل'],['s','سعودي / خليجي'],['ex','مطابق'],['cl','قريب'],['no','معنى فقط']];
-const hit=(d,c)=>c==='all'||(c==='s'?d[3]==='s':kind(d)===c);
-function drawChips(){$('chips').innerHTML=cats.map(c=>`<button class="chip${c[0]===cat?' on':''}" data-c="${c[0]}">${c[1]}<b>${D.filter(d=>hit(d,c[0])).length}</b></button>`).join('')}
-$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;cat=b.dataset.c;render()};
-$('q').oninput=()=>render();
+const skey=d=>{const n=norm(d[0]);return n.startsWith('اللي')?n:n.replace(/^ال/,'')};
+const ltr=d=>skey(d)[0];
+const srt=(a,b)=>a.localeCompare(b,'ar');
+function drawLetters(){
+ const ls=[...new Set(D.map(ltr))].sort(srt);
+ $('chips').innerHTML=['all',...ls].map(x=>`<button class="chip${x===L?' on':''}" data-c="${x}">${x==='all'?'الكل':x}</button>`).join('')}
+$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;L=b.dataset.c;render()};
+$('q').oninput=()=>{L='all';render()};
 function norm(s){return s.replace(/[\u064B-\u065F\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase()}
 function html(d,hl){
  const k=kind(d);
@@ -175,12 +177,14 @@ function html(d,hl){
  return `<div class="card k-${k}${hl?' hl':''}"><div class="top"><span class="tag">${d[3]==='s'?'سعودي / خليجي':'شائع'}</span><span class="st">${st[0]} ${st[1]}</span></div><div class="ar">${d[0]}</div><div class="en"><span class="lbl">${st[2]}</span>${body}</div></div>`}
 function render(){
  const q=norm($('q').value.trim());
- drawChips();
- const r=D.filter(d=>hit(d,cat)&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
+ drawLetters();
+ const r=[...D].sort((a,b)=>srt(skey(a),skey(b))).filter(d=>(L==='all'||ltr(d)===L)&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
  $('cnt').textContent=r.length+' مثل';
- $('list').innerHTML=r.length?r.map(d=>html(d)).join(''):'<div class="empty">ما لقينا نتيجة</div>';
+ let out='',cur='';
+ r.forEach(d=>{const l=ltr(d);if(!q&&L==='all'&&l!==cur){cur=l;out+='<div class="lh">'+l+'</div>'}out+=html(d)});
+ $('list').innerHTML=r.length?out:'<div class="empty">ما لقينا نتيجة</div>';
 }
-$('rnd').onclick=()=>{$('q').value='';cat='all';drawChips();
+$('rnd').onclick=()=>{$('q').value='';L='all';drawLetters();
  const d=D[Math.floor(Math.random()*D.length)];$('cnt').textContent='مثل عشوائي';$('list').innerHTML=html(d,true)};
 render();
 
@@ -209,7 +213,7 @@ $('sv').onclick=async()=>{
   if(!r.ok){msg(r.status===401||r.status===403||r.status===404?'رمز GitHub غير صحيح أو ما له صلاحية':'تعذر الاتصال ('+r.status+')');return}
   const j=await r.json();
   let f=decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
-  const a=f.indexOf('const D=[')+8,b=f.indexOf('];\nlet cat')+1;
+  const a=f.indexOf('const D=[')+8,b=f.indexOf('];\nlet L')+1;
   const arr=JSON.parse(f.slice(a,b));
   arr.push([ar,en,mn,ty]);
   f=f.slice(0,a)+'[\n'+arr.map(x=>JSON.stringify(x)).join(',\n')+'\n]'+f.slice(b);
