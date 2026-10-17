@@ -19,9 +19,11 @@ header{text-align:center;margin:8px 0 20px}
 h1{margin:4px 0;font-size:26px;color:var(--acc)}
 .name{font-weight:700}.sub{color:var(--mute);font-size:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
-/* landing */
-#land{text-align:center}
+/* welcome + landing */
+#welcome,#land{text-align:center}
 #land h2{margin:18px 0 6px;font-size:20px}
+.wbtns{display:grid;gap:12px;margin-top:26px}
+.wbtns .btn{padding:16px;font-size:18px;font-weight:700}
 .choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
 .choice{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:26px 10px;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}
 .choice:hover,.choice:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
@@ -53,6 +55,7 @@ h1{margin:4px 0;font-size:26px;color:var(--acc)}
 .seg button.on{border-color:var(--gold);color:var(--acc);background:var(--bg)}
 .swap{display:block;margin:10px auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font-size:20px;cursor:pointer}
 #go{width:100%;margin-top:18px;padding:14px;font-size:18px}
+.backlnk{display:block;margin:16px auto 0;background:none;border:0;color:var(--mute);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline}
 .contact{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--mute);text-align:center;line-height:1.9}
 .contact a{color:var(--acc);text-decoration:none}
 .contact .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
@@ -70,7 +73,6 @@ h1{margin:4px 0;font-size:26px;color:var(--acc)}
 .it{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
 .bad{color:#c0392b;font-size:13px;margin:6px 0}.mbox .ok{font-size:13px;margin:6px 0}
 .danger{color:#c0392b;border-color:#c0392b}
-.authbox{display:flex;gap:10px;margin-top:14px}.authbox .btn{flex:1}
 </style>
 </head>
 <body>
@@ -84,14 +86,31 @@ h1{margin:4px 0;font-size:26px;color:var(--acc)}
     <div class="sub">جسرٌ بين لسانين · A bridge between two tongues</div>
   </header>
 
-  <section id="land">
+  <!-- الشاشة الأولى: تسجيل الدخول أو المتابعة كضيف -->
+  <section id="welcome">
+    <h1>قاموس الأمثال</h1>
+    <div class="sub">Proverbs Dictionary</div>
+    <div class="wbtns">
+      <button class="btn pri" id="bIn">تسجيل الدخول · Log in</button>
+      <button class="btn" id="bUp">إنشاء حساب · Sign up</button>
+      <button class="btn" id="bGuest">المتابعة كضيف · Continue as guest</button>
+    </div>
+    <div class="contact">
+      <div>بيانات التواصل · Contact</div>
+      <div><a href="https://wa.me/966530703675" target="_blank" rel="noopener">💬 واتساب · WhatsApp</a></div>
+      <div><a class="ltr" href="mailto:balbdly881@hotmail.com">balbdly881@hotmail.com</a></div>
+    </div>
+  </section>
+
+  <!-- الشاشة الثانية: اختيار اللغات -->
+  <section id="land" class="hide">
     <h1>قاموس الأمثال</h1>
     <div class="sub">Proverbs Dictionary</div>
     <div class="grp"><div class="lbl2">اللغة المصدر (لغة الأمثال) · Source language</div><div class="seg" id="segS"><button data-v="ar">العربية</button><button data-v="en">English</button></div></div>
     <button class="swap" id="swapL" aria-label="swap">⇅</button>
     <div class="grp"><div class="lbl2">اللغة الهدف (لغة الترجمة) · Target language</div><div class="seg" id="segT"><button data-v="ar">العربية</button><button data-v="en">English</button></div></div>
     <button class="btn pri" id="go">ابدأ · Start</button>
-    <div class="authbox" id="authBox"><button class="btn" id="bIn">تسجيل الدخول · Log in</button><button class="btn" id="bUp">إنشاء حساب · Sign up</button></div>
+    <button class="backlnk" id="back">→ رجوع · Back</button>
     <div class="contact">
       <div>بيانات التواصل · Contact</div>
       <div><a href="https://wa.me/966530703675" target="_blank" rel="noopener">💬 واتساب · WhatsApp</a></div>
@@ -229,10 +248,19 @@ function render(){
   $("list").innerHTML=h||'<div class="empty">'+t.none+'</div>';
   $("idx").innerHTML=L.map(function(l,i){return'<a href="#L'+(i+1)+'">'+l+'</a>'}).join("");
 }
+/* ===== التنقل بين الشاشات: welcome → land → app ===== */
+function showWelcome(){
+  $("land").classList.add("hide");$("app").classList.add("hide");$("welcome").classList.remove("hide");
+  document.documentElement.dir="rtl";document.documentElement.lang="ar";window.scrollTo(0,0);
+}
+function showLand(){
+  $("welcome").classList.add("hide");$("app").classList.add("hide");$("land").classList.remove("hide");
+  document.documentElement.dir="rtl";document.documentElement.lang="ar";window.scrollTo(0,0);
+}
 function setLang(l){
   lang=l;var t=T[l];
   document.documentElement.lang=l;document.documentElement.dir=t.dir;
-  $("land").classList.add("hide");$("app").classList.remove("hide");
+  $("welcome").classList.add("hide");$("land").classList.add("hide");$("app").classList.remove("hide");
   $("title").textContent=t.title;$("q").placeholder=t.ph;$("q").value="";
   $("rnd").textContent=t.rnd;$("sw").textContent=t.sw;
   $("leg").innerHTML='<b>'+t.leg+'</b><span class="ok">'+t.m+'</span><span class="near">'+t.c+'</span>'+(l==="ar"?'<span class="mean">'+t.o+'</span>':'');
@@ -246,15 +274,17 @@ document.querySelectorAll("#segS button").forEach(function(b){b.onclick=function
 document.querySelectorAll("#segT button").forEach(function(b){b.onclick=function(){tgt=b.dataset.v;src=other(tgt);paintSel()}});
 $("swapL").onclick=function(){var s=src;src=tgt;tgt=s;paintSel()};
 $("go").onclick=function(){setLang(src)};
+$("bGuest").onclick=showLand;
+$("back").onclick=showWelcome;
 $("flip").onclick=function(){setLang(other(lang))};
 paintSel();
 $("q").oninput=render;
-$("sw").onclick=function(){$("app").classList.add("hide");$("land").classList.remove("hide");document.documentElement.dir="rtl";document.documentElement.lang="ar";try{localStorage.removeItem("lang")}catch(e){}};
+$("sw").onclick=function(){showLand();try{localStorage.removeItem("lang")}catch(e){}};
 $("rnd").onclick=function(){var a=items(),x=a[Math.floor(Math.random()*a.length)];$("q").value="";render();var cs=[].slice.call(document.querySelectorAll(".card"));for(var i=0;i<cs.length;i++){if(cs[i].querySelector(".p").textContent===x.key){cs[i].scrollIntoView({behavior:"smooth",block:"center"});cs[i].style.borderColor="var(--gold)";break}}};
 
 /* ===== Supabase: accounts, memory, add-proverb, review ===== */
 var SB_URL="https://ygoxqsniareahbwfwqaq.supabase.co",SB_KEY="sb_publishable_I2JxkE4qDaNLscUBSLK3DA_AqPdNKch",ADMIN="balbdly881@hotmail.com";
-var sb=null,me=null,prof=null,baseN=D.length;
+var sb=null,me=null,prof=null,baseN=D.length,wasIn=false;
 try{sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){}
 function isAdmin(){return !!(me&&(me.email||"").toLowerCase()===ADMIN)}
 function modal(h){var m=$("mod");m.innerHTML='<div class="mbox"><button class="x" onclick="closeMod()">✕</button>'+h+'</div>';m.classList.remove("hide")}
@@ -278,8 +308,15 @@ function authModal(mode){
 $("bIn").onclick=function(){authModal("in")};$("bUp").onclick=function(){authModal("up")};
 async function refreshUser(s){
   me=s?s.user:null;prof=null;
-  $("menuBtn").classList.toggle("hide",!me);$("authBox").classList.toggle("hide",!!me);$("menu").classList.add("hide");
-  if(me){var r=await sb.from("profiles").select("*").eq("id",me.id).maybeSingle();prof=r.data}
+  $("menuBtn").classList.toggle("hide",!me);$("menu").classList.add("hide");
+  $("back").classList.toggle("hide",!!me);
+  if(me){
+    wasIn=true;
+    if(!$("welcome").classList.contains("hide"))showLand();   // بعد الدخول ننتقل لاختيار اللغات
+    var r=await sb.from("profiles").select("*").eq("id",me.id).maybeSingle();prof=r.data;
+  }else if(wasIn){
+    wasIn=false;showWelcome();                                  // بعد الخروج نرجع للشاشة الأولى
+  }
 }
 async function loadApproved(){
   var r=await sb.from("proverbs").select("*").eq("status","approved");
