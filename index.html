@@ -10,15 +10,17 @@
 html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
 *{box-sizing:border-box}
 body{margin:0;color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6;background:radial-gradient(900px 420px at 85% -5%,#1b2578 0%,transparent 62%),radial-gradient(700px 400px at 0% 30%,#12205a55 0%,transparent 60%),var(--bg);min-height:100vh}
-.hero{background:linear-gradient(180deg,#101a58,#0a1133);border-bottom:1px solid var(--bd);text-align:center;padding:18px 16px 20px;border-radius:0 0 26px 26px;box-shadow:0 10px 30px rgba(20,30,120,.35)}
+.hero{position:relative;background:linear-gradient(180deg,#101a58,#0a1133);border-bottom:1px solid var(--bd);text-align:center;padding:18px 16px 20px;border-radius:0 0 26px 26px;box-shadow:0 10px 30px rgba(20,30,120,.35)}
 .hero .orn{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:10px;max-width:240px;margin:0 auto}
 .hero .orn i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
 .seal{width:58px;height:58px;color:var(--gold);display:block;margin:10px auto 4px;filter:drop-shadow(0 0 8px rgba(246,196,83,.45))}
 .nm{font-size:20px;font-weight:800;color:#fff;direction:ltr;letter-spacing:.7px}
 .role{font-size:13px;color:#b9c3f2;margin-top:2px}
 .tg{font-size:11.5px;color:var(--mut);margin-top:8px}
+.lang{position:absolute;top:12px;inset-inline-end:14px;border:1px solid rgba(246,196,83,.55);background:rgba(246,196,83,.08);color:var(--gold);font:inherit;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px;cursor:pointer}
 .wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}
 h1{margin:0;font-size:27px;font-weight:800;color:#fff}
+html[lang=en] h1{font-size:25px}
 h1:after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ind),var(--gold));margin-top:6px}
 .sub{color:var(--mut);font-size:14px;margin:6px 0 14px}
 input,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:#0a1030;color:var(--ink);font:inherit;font-size:16px;outline:0}
@@ -35,9 +37,11 @@ input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,10
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
 .tag{font-size:12px;color:var(--mut)}
 .st{font-size:12px;color:var(--c);border:1px solid var(--c);border-radius:6px;padding:0 8px;background:rgba(255,255,255,.03)}
-.ar{font-size:21px;font-weight:700;line-height:1.5;color:#fff}
+.ar{direction:rtl;text-align:right;font-size:21px;font-weight:700;line-height:1.5;color:#fff}
 .en{direction:ltr;text-align:left;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd);font-size:16px;color:#d9e0ff}
-.lbl{display:block;font-size:11.5px;color:var(--c);direction:rtl;text-align:right;margin-bottom:3px}
+.lbl{display:block;font-size:11.5px;color:var(--c);margin-bottom:3px}
+html[dir=rtl] .lbl{direction:rtl;text-align:right}
+html[dir=ltr] .lbl{direction:ltr;text-align:left}
 .mn{margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd);font-size:14px;color:var(--mut)}
 .empty{text-align:center;color:var(--mut);padding:30px}
 .lg{margin-top:18px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:12px 14px}
@@ -48,39 +52,49 @@ input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,10
 .panel{margin-top:10px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:14px}
 .panel label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
 .lh{font-size:28px;font-weight:800;color:var(--gold);margin:20px 2px 10px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
+#splash{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(800px 500px at 50% 0%,#1b2578 0%,transparent 65%),linear-gradient(160deg,#070c26,#0b1344)}
+#splash[hidden]{display:none}
+.sp{width:100%;max-width:380px;text-align:center}
+.sp .seal{margin:0 auto 14px;width:70px;height:70px}
+.spt{font-size:30px;font-weight:800;color:#fff;line-height:1.4}
+.spt span{display:block;font-size:20px;font-weight:600;color:var(--gold);direction:ltr;font-family:system-ui,sans-serif;margin-top:2px}
+.sp button{display:block;width:100%;margin-top:14px;padding:16px;border-radius:16px;border:1px solid rgba(246,196,83,.55);background:linear-gradient(135deg,#131d63,#0c1345);color:#fff;font:inherit;font-size:24px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(91,107,255,.28)}
+.sp button small{display:block;font-size:13px;font-weight:400;color:var(--mut);margin-top:2px}
 </style>
 </head>
 <body>
+<div id="splash"><div class="sp"><svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width=".7" stroke-dasharray="2 3"/><path d="M40 21v38" stroke="currentColor" stroke-width=".8" opacity=".45"/><text x="28" y="50" font-size="26" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Tajawal,system-ui,sans-serif">ع</text><text x="53" y="49" font-size="24" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Georgia,serif">A</text></svg><div class="spt">اختر لغتك<span>Choose your language</span></div><button data-l="ar">العربية<small>الواجهة بالعربي</small></button><button data-l="en">English<small>English interface</small></button></div></div>
 <header class="hero">
+<button class="lang" id="lang">EN</button>
 <div class="orn"><i></i>◆ ◆ ◆<i></i></div>
 <svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width=".7" stroke-dasharray="2 3"/><path d="M40 21v38" stroke="currentColor" stroke-width=".8" opacity=".45"/><text x="28" y="50" font-size="26" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Tajawal,system-ui,sans-serif">ع</text><text x="53" y="49" font-size="24" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Georgia,serif">A</text></svg>
 <div class="nm">Abdulaziz Alabduly</div>
-<div class="role">مترجم لغة إنجليزية · English Language Translator</div>
-<div class="tg">جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues</div>
+<div class="role" data-i="role">مترجم لغة إنجليزية · English Language Translator</div>
+<div class="tg" data-i="tg">جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues</div>
 </header>
 <div class="wrap">
-<h1>قاموس الأمثال</h1>
-<p class="sub">قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه</p>
-<input id="q" type="search" placeholder="ابحث بالعربي أو الإنجليزي…">
-<div class="sec">الفهرس الأبجدي</div>
+<h1 data-i="title">قاموس الأمثال</h1>
+<p class="sub" data-i="sub">قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه</p>
+<input id="q" type="search" data-ip="search" placeholder="ابحث بالعربي أو الإنجليزي…">
+<div class="sec" data-i="idx">الفهرس الأبجدي</div>
 <div class="chips" id="chips"></div>
-<button class="rnd" id="rnd">🎲 مثل عشوائي</button>
+<button class="rnd" id="rnd" data-i="rnd">🎲 مثل عشوائي</button>
 <p class="cnt" id="cnt">70 مثل</p>
 <div id="list"><!--S--><!--E--></div>
-<div class="lg"><div class="lgt">دليل الألوان</div>
-<div class="lgi k-ex"><span>✓</span><div><b>مطابق</b><small>مرادف إنجليزي يطابق المعنى والصياغة تقريباً</small></div></div>
-<div class="lgi k-cl"><span>⚠</span><div><b>قريب</b><small>أقرب مرادف، لكنه ليس مطابقاً تماماً، فيُعرض معه المعنى</small></div></div>
-<div class="lgi k-no"><span>ⓘ</span><div><b>معنى فقط</b><small>ما له مرادف إنجليزي، فنكتفي بشرح معناه</small></div></div>
+<div class="lg"><div class="lgt" data-i="lg">دليل الألوان</div>
+<div class="lgi k-ex"><span>✓</span><div><b data-i="ex">مطابق</b><small data-i="lgex"></small></div></div>
+<div class="lgi k-cl"><span>⚠</span><div><b data-i="cl">قريب</b><small data-i="lgcl"></small></div></div>
+<div class="lgi k-no"><span>ⓘ</span><div><b data-i="no">معنى فقط</b><small data-i="lgno"></small></div></div>
 </div>
-<button class="adm" id="adm">🔒 إضافة مثل (للمالك فقط)</button>
+<button class="adm" id="adm" data-i="adm">🔒 إضافة مثل (للمالك فقط)</button>
 <div class="panel" id="panel" hidden>
-<label>كلمة المرور</label><input id="pw" type="password" autocomplete="off">
-<div id="tkw"><label>رمز GitHub (أول مرة فقط)</label><input id="tk" type="password" autocomplete="off" placeholder="github_pat_..."></div>
-<label>المثل بالعربي</label><input id="nar" placeholder="مثال: الأفعال أقوى من الكلام">
-<label>المرادف بالإنجليزي (ابدأه بـ ≈ إذا كان قريباً وغير مطابق، واتركه فاضي إذا ما له مرادف)</label><input id="nen" dir="ltr">
-<label>المعنى بالإنجليزي (مطلوب إذا ما له مرادف)</label><input id="nmn" dir="ltr">
-<label>النوع</label><select id="nty"><option value="s">سعودي / خليجي</option><option value="g">شائع</option></select>
-<button class="rnd" id="sv">حفظ ونشر</button>
+<label data-i="pw">كلمة المرور</label><input id="pw" type="password" autocomplete="off">
+<div id="tkw"><label data-i="tk">رمز GitHub (أول مرة فقط)</label><input id="tk" type="password" autocomplete="off" placeholder="github_pat_..."></div>
+<label data-i="nar">المثل بالعربي</label><input id="nar" placeholder="مثال: الأفعال أقوى من الكلام">
+<label data-i="nen">المرادف بالإنجليزي</label><input id="nen" dir="ltr">
+<label data-i="nmn">المعنى بالإنجليزي</label><input id="nmn" dir="ltr">
+<label data-i="nty">النوع</label><select id="nty"><option value="s" data-i="s">سعودي / خليجي</option><option value="g" data-i="g">شائع</option></select>
+<button class="rnd" id="sv" data-i="sv">حفظ ونشر</button>
 <p class="cnt" id="msg"></p>
 </div>
 </div>
@@ -159,6 +173,12 @@ const D=[
 ["ضربني وبكى وسبقني واشتكى", "", "Someone does wrong, then plays the victim and complains first.", "g"]
 ];
 let L='all';
+const T={
+ar:{title:'قاموس الأمثال',sub:'قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه',search:'ابحث بالعربي أو الإنجليزي…',idx:'الفهرس الأبجدي',all:'الكل',rnd:'🎲 مثل عشوائي',rndLbl:'مثل عشوائي',n:'مثل',empty:'ما لقينا نتيجة',ex:'مطابق',cl:'قريب',no:'معنى فقط',lex:'المرادف بالإنجليزي',lcl:'أقرب مرادف',lno:'ما له مرادف — المعنى',mean:'المعنى',s:'سعودي / خليجي',g:'شائع',lg:'دليل الألوان',lgex:'مرادف إنجليزي يطابق المعنى والصياغة تقريباً',lgcl:'أقرب مرادف، لكنه ليس مطابقاً تماماً، فيُعرض معه المعنى',lgno:'ما له مرادف إنجليزي، فنكتفي بشرح معناه',adm:'🔒 إضافة مثل (للمالك فقط)',pw:'كلمة المرور',tk:'رمز GitHub (أول مرة فقط)',nar:'المثل بالعربي',nen:'المرادف بالإنجليزي (ابدأه بـ ≈ إذا كان قريباً وغير مطابق، واتركه فاضي إذا ما له مرادف)',nmn:'المعنى بالإنجليزي (مطلوب إذا ما له مرادف)',nty:'النوع',sv:'حفظ ونشر',role:'مترجم لغة إنجليزية · English Language Translator',tg:'جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues',sw:'EN',m1:'عبّ كلمة المرور والمثل والمرادف أو المعنى',m2:'هذا المثل موجود',m3:'جاري الحفظ…',m4:'كلمة المرور خاطئة',m5:'أدخل رمز GitHub (أول مرة فقط)',m6:'رمز GitHub غير صحيح أو ما له صلاحية',m7:'تعذر الاتصال (',m8:'فشل الحفظ (',m9:'تم ✅ يظهر للجميع بعد دقيقة تقريباً',m10:'صار خطأ: '},
+en:{title:'Arabic Proverbs Dictionary',sub:'An electronic dictionary of Arabic proverbs, in alphabetical order, with the closest English equivalent or the meaning of each',search:'Search in Arabic or English…',idx:'ALPHABETICAL INDEX (ARABIC LETTERS)',all:'All',rnd:'🎲 Random proverb',rndLbl:'Random proverb',n:'proverbs',empty:'No results found',ex:'Exact',cl:'Close',no:'Meaning only',lex:'English equivalent',lcl:'Closest equivalent',lno:'No equivalent — meaning',mean:'Meaning',s:'Saudi / Gulf',g:'Common',lg:'COLOR GUIDE',lgex:'An English proverb that closely matches the meaning and wording',lgcl:'The closest equivalent, not an exact match, so the meaning is shown too',lgno:'No English equivalent exists, so only the meaning is explained',adm:'🔒 Add a proverb (owner only)',pw:'Password',tk:'GitHub token (first time only)',nar:'Proverb in Arabic',nen:'English equivalent (start with ≈ if close but not exact; leave empty if none)',nmn:'Meaning in English (required if no equivalent)',nty:'Type',sv:'Save & publish',role:'English Language Translator',tg:'A bridge between two tongues',sw:'العربية',m1:'Fill in the password, the proverb, and the equivalent or meaning',m2:'This proverb already exists',m3:'Saving…',m4:'Wrong password',m5:'Enter the GitHub token (first time only)',m6:'GitHub token is invalid or lacks permission',m7:'Connection failed (',m8:'Save failed (',m9:'Done ✅ It will appear for everyone in about a minute',m10:'An error occurred: '}
+};
+let lang='ar';
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
 const $=id=>document.getElementById(id);
 const kind=d=>!d[1]?'no':d[1][0]==='≈'?'cl':'ex';
 const skey=d=>{const n=norm(d[0]);return n.startsWith('اللي')?n:n.replace(/^ال/,'')};
@@ -166,69 +186,4 @@ const ltr=d=>skey(d)[0];
 const srt=(a,b)=>a.localeCompare(b,'ar');
 function drawLetters(){
  const ls=[...new Set(D.map(ltr))].sort(srt);
- $('chips').innerHTML=['all',...ls].map(x=>`<button class="chip${x===L?' on':''}" data-c="${x}">${x==='all'?'الكل':x}</button>`).join('')}
-$('chips').onclick=e=>{const b=e.target.closest('.chip');if(!b)return;L=b.dataset.c;render()};
-$('q').oninput=()=>{L='all';render()};
-function norm(s){return s.replace(/[\u064B-\u065F\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي').replace(/ة/g,'ه').toLowerCase()}
-function html(d,hl){
- const k=kind(d);
- const st={ex:['✓','مطابق','المرادف بالإنجليزي'],cl:['⚠','قريب','أقرب مرادف'],no:['ⓘ','معنى فقط','ما له مرادف — المعنى']}[k];
- const body=k==='no'?d[2]:k==='cl'?d[1].slice(1).trim()+(d[2]?'<div class="mn"><span class="lbl">المعنى</span>'+d[2]+'</div>':''):d[1];
- return `<div class="card k-${k}${hl?' hl':''}"><div class="top"><span class="tag">${d[3]==='s'?'سعودي / خليجي':'شائع'}</span><span class="st">${st[0]} ${st[1]}</span></div><div class="ar">${d[0]}</div><div class="en"><span class="lbl">${st[2]}</span>${body}</div></div>`}
-function render(){
- const q=norm($('q').value.trim());
- drawLetters();
- const r=[...D].sort((a,b)=>srt(skey(a),skey(b))).filter(d=>(L==='all'||ltr(d)===L)&&(!q||norm(d[0]).includes(q)||(d[1]+' '+d[2]).toLowerCase().includes(q)));
- $('cnt').textContent=r.length+' مثل';
- let out='',cur='';
- r.forEach(d=>{const l=ltr(d);if(!q&&L==='all'&&l!==cur){cur=l;out+='<div class="lh">'+l+'</div>'}out+=html(d)});
- $('list').innerHTML=r.length?out:'<div class="empty">ما لقينا نتيجة</div>';
-}
-$('rnd').onclick=()=>{$('q').value='';L='all';drawLetters();
- const d=D[Math.floor(Math.random()*D.length)];$('cnt').textContent='مثل عشوائي';$('list').innerHTML=html(d,true)};
-render();
-
-// ===== إضافة مثل (للمالك) =====
-let VAULT="";
-const OWN=location.hostname.split('.')[0],REPO=location.pathname.split('/')[1]||'';
-const esc=x=>x.replace(/[<>&]/g,c=>({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]));
-function msg(t){$('msg').textContent=t}
-const B=u=>btoa(String.fromCharCode(...u)),U=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
-async function key(pw,salt){const m=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:200000,hash:'SHA-256'},m,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])}
-async function enc(pw,tok){const salt=crypto.getRandomValues(new Uint8Array(16)),iv=crypto.getRandomValues(new Uint8Array(12));const c=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},await key(pw,salt),new TextEncoder().encode(tok)));return B(new Uint8Array([...salt,...iv,...c]))}
-async function dec(pw,v){const u=U(v);return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:u.slice(16,28)},await key(pw,u.slice(0,16)),u.slice(28)))}
-$('adm').onclick=()=>{const p=$('panel');p.hidden=!p.hidden;$('tkw').hidden=!!VAULT};
-$('sv').onclick=async()=>{
- const pw=$('pw').value,ar=esc($('nar').value.trim()),en=esc($('nen').value.trim()),mn=esc($('nmn').value.trim()),ty=$('nty').value;
- if(!pw||!ar||(!en&&!mn)){msg('عبّ كلمة المرور والمثل والمرادف أو المعنى');return}
- if(D.some(d=>d[0]===ar)){msg('هذا المثل موجود');return}
- msg('جاري الحفظ…');
- try{
-  let tok,vault=VAULT;
-  if(VAULT){try{tok=await dec(pw,VAULT)}catch(e){msg('كلمة المرور خاطئة');return}}
-  else{tok=$('tk').value.trim();if(!tok){msg('أدخل رمز GitHub (أول مرة فقط)');return}vault=await enc(pw,tok)}
-  const api='https://api.github.com/repos/'+OWN+'/'+REPO+'/contents/index.html';
-  const H={Authorization:'Bearer '+tok,Accept:'application/vnd.github+json'};
-  const r=await fetch(api,{headers:H});
-  if(!r.ok){msg(r.status===401||r.status===403||r.status===404?'رمز GitHub غير صحيح أو ما له صلاحية':'تعذر الاتصال ('+r.status+')');return}
-  const j=await r.json();
-  let f=decodeURIComponent(escape(atob(j.content.replace(/\n/g,''))));
-  const a=f.indexOf('const D=[')+8,b=f.indexOf('];\nlet L')+1;
-  const arr=JSON.parse(f.slice(a,b));
-  arr.push([ar,en,mn,ty]);
-  f=f.slice(0,a)+'[\n'+arr.map(x=>JSON.stringify(x)).join(',\n')+'\n]'+f.slice(b);
-  const i=f.indexOf('<!--S-->')+8,k=f.indexOf('<!--E-->');
-  f=f.slice(0,i)+arr.map(x=>html(x)).join('')+f.slice(k);
-  f=f.replace(/(<p class="cnt" id="cnt">)[^<]*/,'$1'+arr.length+' مثل');
-  const v1=f.indexOf('let VAULT="')+11,v2=f.indexOf('";',v1);
-  f=f.slice(0,v1)+vault+f.slice(v2);
-  const p=await fetch(api,{method:'PUT',headers:H,body:JSON.stringify({message:'add proverb',content:btoa(unescape(encodeURIComponent(f))),sha:j.sha})});
-  if(!p.ok){msg('فشل الحفظ ('+p.status+')');return}
-  VAULT=vault;D.push([ar,en,mn,ty]);
-  ['nar','nen','nmn','tk'].forEach(x=>$(x).value='');$('tkw').hidden=true;
-  render();msg('تم ✅ يظهر للجميع بعد دقيقة تقريباً');
- }catch(e){msg('صار خطأ: '+e.message)}
-};
-</script>
-</body>
-</html>
+ $('chips').innerHTML=['all',...ls].map(x=>`<button class="chip${x===L?' on':''}" data-c="${x}">${x==='all'?T[lang].all:x}
