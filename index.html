@@ -3,187 +3,351 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a1133">
-<title>قاموس الأمثال</title>
+<title>قاموس الأمثال · Proverbs Dictionary</title>
 <style>
-:root{--bg:#060a1c;--card:#0c1233;--card2:#111a47;--bd:#1f2c66;--ink:#e8ecff;--mut:#8f9bd0;--ind:#5b6bff;--grn:#34d6a3;--amb:#f6c453;--blu:#6a98ff;--gold:#f6c453;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px);color-scheme:dark}
+:root{--bg:#f6f0e4;--card:#fffaf0;--ink:#2a2118;--mute:#7a6c5a;--acc:#1f5c4d;--gold:#b8892f;--line:#e3d6bd;--ok:#1f7a4d;--near:#b8721f;--mean:#5a6b8c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17130e;--card:#211b14;--ink:#f1e8d6;--mute:#a89a82;--acc:#5fc2a7;--gold:#d9a94a;--line:#382f22;--ok:#5fd09a;--near:#e8a255;--mean:#93a6cc}}
+:root[data-theme="dark"]{--bg:#17130e;--card:#211b14;--ink:#f1e8d6;--mute:#a89a82;--acc:#5fc2a7;--gold:#d9a94a;--line:#382f22;--ok:#5fd09a;--near:#e8a255;--mean:#93a6cc}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;color:var(--ink);font-family:'Tajawal',system-ui,sans-serif;line-height:1.6;background:radial-gradient(900px 420px at 85% -5%,#1b2578 0%,transparent 62%),radial-gradient(700px 400px at 0% 30%,#12205a55 0%,transparent 60%),var(--bg);min-height:100vh}
-.hero{position:relative;background:linear-gradient(180deg,#101a58,#0a1133);border-bottom:1px solid var(--bd);text-align:center;padding:18px 16px 20px;border-radius:0 0 26px 26px;box-shadow:0 10px 30px rgba(20,30,120,.35)}
-.hero .orn{display:flex;align-items:center;gap:12px;color:var(--gold);font-size:10px;max-width:240px;margin:0 auto}
-.hero .orn i{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.seal{width:58px;height:58px;color:var(--gold);display:block;margin:10px auto 4px;filter:drop-shadow(0 0 8px rgba(246,196,83,.45))}
-.nm{font-size:20px;font-weight:800;color:#fff;direction:ltr;letter-spacing:.7px}
-.role{font-size:13px;color:#b9c3f2;margin-top:2px}
-.tg{font-size:11.5px;color:var(--mut);margin-top:8px}
-.lang{position:absolute;top:12px;inset-inline-end:14px;border:1px solid rgba(246,196,83,.55);background:rgba(246,196,83,.08);color:var(--gold);font:inherit;font-size:13px;font-weight:700;padding:4px 12px;border-radius:99px;cursor:pointer}
-.wrap{max-width:640px;margin:0 auto;padding:18px 14px 40px}
-h1{margin:0;font-size:27px;font-weight:800;color:#fff}
-html[lang=en] h1{font-size:25px}
-h1:after{content:"";display:block;width:44px;height:3px;border-radius:3px;background:linear-gradient(90deg,var(--ind),var(--gold));margin-top:6px}
-.sub{color:var(--mut);font-size:14px;margin:6px 0 14px}
-input,select{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--bd);background:#0a1030;color:var(--ink);font:inherit;font-size:16px;outline:0}
-input:focus,select:focus{border-color:var(--ind);box-shadow:0 0 0 3px rgba(91,107,255,.25)}
-.sec{font-size:11.5px;letter-spacing:.5px;color:var(--mut);margin:14px 0 0}
-.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 0 12px}
-.chip{flex:none;min-width:40px;text-align:center;border:1px solid var(--bd);background:#0a1030;color:var(--mut);padding:7px 12px;border-radius:99px;font:inherit;font-size:15px;font-weight:700;cursor:pointer}
-.chip.on{background:var(--ind);border-color:var(--ind);color:#fff;box-shadow:0 0 16px rgba(91,107,255,.45)}
-.rnd{width:100%;margin:2px 0 14px;padding:11px;border:0;border-radius:12px;background:linear-gradient(135deg,#4f5bff,#7b5bff);color:#fff;font:inherit;font-weight:700;font-size:15px;cursor:pointer;box-shadow:0 4px 16px rgba(91,107,255,.35)}
-.cnt{color:var(--mut);font-size:13px;margin:0 0 10px}
-.k-ex{--c:var(--grn)}.k-cl{--c:var(--amb)}.k-no{--c:var(--blu)}
-.card{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--bd);border-inline-start:3px solid var(--c);border-radius:14px;padding:14px 16px;margin-bottom:12px}
-.card.hl{box-shadow:0 0 0 1px var(--ind),0 0 26px rgba(91,107,255,.4)}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
-.tag{font-size:12px;color:var(--mut)}
-.st{font-size:12px;color:var(--c);border:1px solid var(--c);border-radius:6px;padding:0 8px;background:rgba(255,255,255,.03)}
-.ar{direction:rtl;text-align:right;font-size:21px;font-weight:700;line-height:1.5;color:#fff}
-.en{direction:ltr;text-align:left;margin-top:10px;padding-top:10px;border-top:1px solid var(--bd);font-size:16px;color:#d9e0ff}
-.lbl{display:block;font-size:11.5px;color:var(--c);margin-bottom:3px}
-html[dir=rtl] .lbl{direction:rtl;text-align:right}
-html[dir=ltr] .lbl{direction:ltr;text-align:left}
-.mn{margin-top:8px;padding-top:8px;border-top:1px dashed var(--bd);font-size:14px;color:var(--mut)}
-.empty{text-align:center;color:var(--mut);padding:30px}
-.lg{margin-top:18px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:12px 14px}
-.lgt{font-size:11.5px;letter-spacing:.5px;color:var(--mut);margin-bottom:8px}
-.lgi{display:flex;gap:10px;align-items:flex-start;color:var(--c);margin:6px 0;font-size:14px}
-.lgi small{display:block;color:var(--mut);font-size:12.5px}
-.adm{width:100%;margin-top:18px;padding:10px;border:1px dashed var(--bd);border-radius:12px;background:transparent;color:var(--mut);font:inherit;font-size:14px;cursor:pointer}
-.panel{margin-top:10px;background:#0a1030;border:1px solid var(--bd);border-radius:14px;padding:14px}
-.panel label{display:block;font-size:13px;color:var(--mut);margin:10px 0 4px}
-.lh{font-size:28px;font-weight:800;color:var(--gold);margin:20px 2px 10px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
-#splash{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(800px 500px at 50% 0%,#1b2578 0%,transparent 65%),linear-gradient(160deg,#070c26,#0b1344)}
-#splash[hidden]{display:none}
-.sp{width:100%;max-width:380px;text-align:center}
-.sp .seal{margin:0 auto 14px;width:70px;height:70px}
-.spt{font-size:30px;font-weight:800;color:#fff;line-height:1.4}
-.spt span{display:block;font-size:20px;font-weight:600;color:var(--gold);direction:ltr;font-family:system-ui,sans-serif;margin-top:2px}
-.sp button{display:block;width:100%;margin-top:14px;padding:16px;border-radius:16px;border:1px solid rgba(246,196,83,.55);background:linear-gradient(135deg,#131d63,#0c1345);color:#fff;font:inherit;font-size:24px;font-weight:800;cursor:pointer;box-shadow:0 6px 24px rgba(91,107,255,.28)}
-.sp button small{display:block;font-size:13px;font-weight:400;color:var(--mut);margin-top:2px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Segoe UI",Tahoma,"Noto Naskh Arabic",system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:720px;margin:0 auto;padding:20px 16px 48px;position:relative}
+.orn{text-align:center;color:var(--gold);letter-spacing:.6em;font-size:12px}
+header{text-align:center;margin:8px 0 20px}
+.logo{width:52px;height:52px;border-radius:50%;background:var(--acc);color:var(--bg);display:inline-grid;place-items:center;font-size:24px;font-weight:700;margin:8px 0}
+h1{margin:4px 0;font-size:26px;color:var(--acc)}
+.name{font-weight:700}.sub{color:var(--mute);font-size:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:10px 0}
+/* landing */
+#land{text-align:center}
+#land h2{margin:18px 0 6px;font-size:20px}
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+.choice{background:var(--card);border:2px solid var(--line);border-radius:16px;padding:26px 10px;cursor:pointer;color:var(--ink);font:inherit;transition:.15s}
+.choice:hover,.choice:focus-visible{border-color:var(--gold);transform:translateY(-2px);outline:none}
+.choice b{display:block;font-size:26px;color:var(--acc)}
+.choice span{font-size:13px;color:var(--mute)}
+/* app */
+.bar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+.bar input{flex:1;min-width:140px;padding:10px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:inherit}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;font:inherit}
+.btn.pri{background:var(--acc);color:var(--bg);border-color:var(--acc)}
+.count{color:var(--mute);font-size:13px}
+.idx{display:flex;gap:6px;overflow-x:auto;padding:4px 0 8px}
+.idx a{flex:none;min-width:34px;text-align:center;padding:5px 8px;border:1px solid var(--line);border-radius:8px;color:var(--acc);text-decoration:none;background:var(--card);font-weight:600}
+.letter{font-size:22px;color:var(--gold);margin:22px 0 4px;border-bottom:1px solid var(--line);font-weight:700}
+.p{font-size:18px;font-weight:700;margin-bottom:6px}
+.badge{display:inline-block;font-size:12px;padding:2px 9px;border-radius:99px;border:1px solid currentColor;margin-inline-end:6px}
+.ok{color:var(--ok)}.near{color:var(--near)}.mean{color:var(--mean)}
+.tag{color:var(--mute);font-size:12px}
+.row{margin-top:6px}.lbl{color:var(--mute);font-size:13px}
+.eq{font-size:16px}
+.en{direction:ltr;text-align:left;unicode-bidi:isolate}
+.ar{direction:rtl;text-align:right;unicode-bidi:isolate}
+.legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px;font-size:13px}
+.empty{text-align:center;color:var(--mute);padding:30px 0}
+.hide{display:none}
+.grp{margin:18px 0 6px;text-align:start}.grp .lbl2{font-weight:700;margin-bottom:6px}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.seg button{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:16px 8px;font:inherit;font-size:20px;font-weight:700;color:var(--ink);cursor:pointer}
+.seg button.on{border-color:var(--gold);color:var(--acc);background:var(--bg)}
+.swap{display:block;margin:10px auto;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--acc);font-size:20px;cursor:pointer}
+#go{width:100%;margin-top:18px;padding:14px;font-size:18px}
+.contact{margin-top:48px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--mute);text-align:center;line-height:1.9}
+.contact a{color:var(--acc);text-decoration:none}
+.contact .ltr{direction:ltr;unicode-bidi:isolate;display:inline-block}
+
+#menuBtn{position:absolute;right:12px;top:12px;width:42px;height:42px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:22px;cursor:pointer;z-index:5}
+.menu{position:absolute;right:12px;top:58px;background:var(--card);border:1px solid var(--line);border-radius:12px;min-width:210px;z-index:6;box-shadow:0 8px 24px #0003;overflow:hidden}
+.menu button{display:block;width:100%;padding:12px 14px;border:0;border-bottom:1px solid var(--line);background:none;color:var(--ink);font:inherit;text-align:start;cursor:pointer}
+#mod{position:fixed;inset:0;background:#0008;display:grid;place-items:center;z-index:20;padding:16px}
+#mod.hide{display:none}
+.mbox{position:relative;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:16px;padding:20px;width:100%;max-width:420px;max-height:88vh;overflow:auto}
+.mbox h2{margin:0 0 10px;color:var(--acc);font-size:20px}.mbox h3{font-size:15px;margin:14px 0 4px}
+.mbox input,.mbox select,.mbox textarea{width:100%;margin:5px 0;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--ink);font:inherit}
+.mbox textarea{min-height:60px}.mbox label{font-size:13px;color:var(--mute)}.mbox .full{width:100%;margin-top:8px}
+.x{position:absolute;inset-inline-end:10px;top:10px;border:0;background:none;color:var(--mute);font-size:18px;cursor:pointer}
+.it{padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}
+.bad{color:#c0392b;font-size:13px;margin:6px 0}.mbox .ok{font-size:13px;margin:6px 0}
+.danger{color:#c0392b;border-color:#c0392b}
+.authbox{display:flex;gap:10px;margin-top:14px}.authbox .btn{flex:1}
 </style>
 </head>
 <body>
-<div id="splash"><div class="sp"><svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width=".7" stroke-dasharray="2 3"/><path d="M40 21v38" stroke="currentColor" stroke-width=".8" opacity=".45"/><text x="28" y="50" font-size="26" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Tajawal,system-ui,sans-serif">ع</text><text x="53" y="49" font-size="24" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Georgia,serif">A</text></svg><div class="spt">اختر لغتك<span>Choose your language</span></div><button data-l="ar">العربية<small>الواجهة بالعربي</small></button><button data-l="en">English<small>English interface</small></button></div></div>
-<header class="hero">
-<button class="lang" id="lang">EN</button>
-<div class="orn"><i></i>◆ ◆ ◆<i></i></div>
-<svg class="seal" viewBox="0 0 80 80" aria-hidden="true"><circle cx="40" cy="40" r="37" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="40" cy="40" r="32" fill="none" stroke="currentColor" stroke-width=".7" stroke-dasharray="2 3"/><path d="M40 21v38" stroke="currentColor" stroke-width=".8" opacity=".45"/><text x="28" y="50" font-size="26" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Tajawal,system-ui,sans-serif">ع</text><text x="53" y="49" font-size="24" font-weight="800" text-anchor="middle" fill="currentColor" font-family="Georgia,serif">A</text></svg>
-<div class="nm">Abdulaziz Alabduly</div>
-<div class="role" data-i="role">مترجم لغة إنجليزية · English Language Translator</div>
-<div class="tg" data-i="tg">جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues</div>
-</header>
 <div class="wrap">
-<h1 data-i="title">قاموس الأمثال</h1>
-<p class="sub" data-i="sub">قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه</p>
-<input id="q" type="search" data-ip="search" placeholder="ابحث بالعربي أو الإنجليزي…">
-<div class="sec" data-i="idx">الفهرس الأبجدي</div>
-<div class="chips" id="chips"></div>
-<button class="rnd" id="rnd" data-i="rnd">🎲 مثل عشوائي</button>
-<p class="cnt" id="cnt">70 مثل</p>
-<div id="list"><!--S--><!--E--></div>
-<div class="lg"><div class="lgt" data-i="lg">دليل الألوان</div>
-<div class="lgi k-ex"><span>✓</span><div><b data-i="ex">مطابق</b><small data-i="lgex"></small></div></div>
-<div class="lgi k-cl"><span>⚠</span><div><b data-i="cl">قريب</b><small data-i="lgcl"></small></div></div>
-<div class="lgi k-no"><span>ⓘ</span><div><b data-i="no">معنى فقط</b><small data-i="lgno"></small></div></div>
+  <div class="orn">◆ ◆ ◆</div>
+  <button id="menuBtn" class="hide" aria-label="menu">☰</button>
+  <div id="menu" class="menu hide"></div>
+  <header>
+    <div class="logo">ع</div>
+    <div class="name">عبدالعزيز العبدلي · Abdulaziz Alabduly</div>
+    <div class="sub">جسرٌ بين لسانين · A bridge between two tongues</div>
+  </header>
+
+  <section id="land">
+    <h1>قاموس الأمثال</h1>
+    <div class="sub">Proverbs Dictionary</div>
+    <div class="grp"><div class="lbl2">اللغة المصدر (لغة الأمثال) · Source language</div><div class="seg" id="segS"><button data-v="ar">العربية</button><button data-v="en">English</button></div></div>
+    <button class="swap" id="swapL" aria-label="swap">⇅</button>
+    <div class="grp"><div class="lbl2">اللغة الهدف (لغة الترجمة) · Target language</div><div class="seg" id="segT"><button data-v="ar">العربية</button><button data-v="en">English</button></div></div>
+    <button class="btn pri" id="go">ابدأ · Start</button>
+    <div class="authbox" id="authBox"><button class="btn" id="bIn">تسجيل الدخول · Log in</button><button class="btn" id="bUp">إنشاء حساب · Sign up</button></div>
+    <div class="contact">
+      <div>بيانات التواصل · Contact</div>
+      <div><a href="https://wa.me/966530703675" target="_blank" rel="noopener">💬 واتساب · WhatsApp</a></div>
+      <div><a class="ltr" href="mailto:balbdly881@hotmail.com">balbdly881@hotmail.com</a></div>
+    </div>
+  </section>
+
+  <section id="app" class="hide">
+    <h1 id="title"></h1>
+    <div class="bar">
+      <input id="q" type="search">
+      <button class="btn pri" id="rnd"></button>
+      <button class="btn" id="flip">⇄</button>
+      <button class="btn" id="sw"></button>
+    </div>
+    <div class="count" id="cnt"></div>
+    <div class="idx" id="idx"></div>
+    <div id="list"></div>
+    <div class="legend" id="leg"></div>
+  </section>
 </div>
-<button class="adm" id="adm" data-i="adm">🔒 إضافة مثل (للمالك فقط)</button>
-<div class="panel" id="panel" hidden>
-<label data-i="pw">كلمة المرور</label><input id="pw" type="password" autocomplete="off">
-<div id="tkw"><label data-i="tk">رمز GitHub (أول مرة فقط)</label><input id="tk" type="password" autocomplete="off" placeholder="github_pat_..."></div>
-<label data-i="nar">المثل بالعربي</label><input id="nar" placeholder="مثال: الأفعال أقوى من الكلام">
-<label data-i="nen">المرادف بالإنجليزي</label><input id="nen" dir="ltr">
-<label data-i="nmn">المعنى بالإنجليزي</label><input id="nmn" dir="ltr">
-<label data-i="nty">النوع</label><select id="nty"><option value="s" data-i="s">سعودي / خليجي</option><option value="g" data-i="g">شائع</option></select>
-<button class="rnd" id="sv" data-i="sv">حفظ ونشر</button>
-<p class="cnt" id="msg"></p>
-</div>
-</div>
+
+<div id="mod" class="hide"></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script>
-// [عربي, مرادف إنجليزي (أو فاضي), المعنى بالإنجليزي, نوع: s سعودي/خليجي | g عام]
-const D=[
-["اللي ما يعرف الصقر يشويه", "", "Someone who doesn't recognize the value of something treats it carelessly or ruins it.", "s"],
-["اللي يخاف من الذيب ما يرعى الغنم", "If you can't stand the heat, get out of the kitchen.", "", "s"],
-["اللي ما يعرف يقول عدس", "", "A clueless person blurts out a random answer instead of admitting he doesn't know.", "s"],
-["اللي ما له كبير يشتري له كبير", "", "Everyone needs an elder or wise guide; if you don't have one, find one.", "s"],
-["ضرب الحبيب زبيب", "", "Criticism, or even a slap, from someone who loves you is easy to take, like eating raisins.", "s"],
-["الجار قبل الدار", "", "Choose your neighbor before you choose your house.", "s"],
-["الجود من الموجود", "", "Be generous with whatever you have; giving what is available is enough.", "s"],
-["الصاحب ساحب", "A man is known by the company he keeps.", "", "s"],
-["ما يحك جلدك مثل ظفرك", "If you want something done right, do it yourself.", "", "s"],
-["اللي ما يطول العنب حامض يقول عنه", "Sour grapes.", "", "s"],
-["اللي يبي الورد يتحمل الشوك", "No pain, no gain. / There's no rose without a thorn.", "", "s"],
-["جاء يكحلها عماها", "≈ The cure is worse than the disease.", "He tried to fix it and made it worse.", "s"],
-["العين ما تعلى على الحاجب", "", "You can't rise above your superiors; know your place.", "s"],
-["الأفعال أقوى من الكلام", "Actions speak louder than words.", "", "g"],
-["كثرة الطباخين تحرق الطبخة", "Too many cooks spoil the broth.", "", "s"],
-["مد رجولك على قد لحافك", "Cut your coat according to your cloth.", "", "s"],
-["الطيور على أشكالها تقع", "Birds of a feather flock together.", "", "g"],
-["يا ما تحت السواهي دواهي", "", "A calm surface can hide trouble underneath.", "g"],
-["الحاجة أم الاختراع", "Necessity is the mother of invention.", "", "g"],
-["في التأني السلامة وفي العجلة الندامة", "Haste makes waste.", "", "g"],
-["لا تقول فول حتى يصير في المكيول", "Don't count your chickens before they hatch.", "", "s"],
-["ما كل ما يلمع ذهب", "All that glitters is not gold.", "", "g"],
-["القرد في عين أمه غزال", "", "Parents see their own children as the most beautiful, whatever others think.", "g"],
-["حبل الكذب قصير", "", "Lies don't last; they are soon exposed.", "g"],
-["عصفور في اليد خير من عشرة على الشجرة", "A bird in the hand is worth two in the bush.", "", "g"],
-["الحر تكفيه الإشارة", "A word to the wise is enough.", "", "g"],
-["البعيد عن العين بعيد عن القلب", "Out of sight, out of mind.", "", "g"],
-["الوقت كالسيف إن لم تقطعه قطعك", "≈ Time and tide wait for no man.", "Use your time well, or it works against you.", "g"],
-["العلم في الصغر كالنقش على الحجر", "≈ What is learned in the cradle is carried to the grave.", "What you learn when young stays with you, like carving on stone.", "g"],
-["من جدّ وجد ومن زرع حصد", "≈ Hard work pays off.", "Whoever strives finds, and whoever sows reaps.", "g"],
-["الدنيا دوّارة", "", "Life is a turning wheel; fortunes rise and fall.", "s"],
-["خير الأمور أوسطها", "Moderation in all things.", "", "g"],
-["اسأل مجرّب ولا تسأل طبيب", "≈ Experience is the best teacher.", "Ask someone who has been through it rather than an expert.", "g"],
-["المكتوب على الجبين لازم تشوفه العين", "What will be, will be.", "", "g"],
-["الصبر مفتاح الفرج", "≈ Good things come to those who wait.", "Patience is the key to relief.", "g"],
-["درهم وقاية خير من قنطار علاج", "An ounce of prevention is worth a pound of cure.", "", "g"],
-["إذا كان الكلام من فضة فالسكوت من ذهب", "Speech is silver, silence is golden.", "", "g"],
-["الصديق وقت الضيق", "A friend in need is a friend indeed.", "", "g"],
-["الطمع يقل ما جمع", "Grasp all, lose all.", "", "g"],
-["ابن البط عوام", "Like father, like son. / A chip off the old block.", "", "g"],
-["من يزرع الشوك لا يحصد العنب", "As you sow, so shall you reap.", "", "g"],
-["قل خيراً أو اصمت", "If you can't say something nice, don't say anything at all.", "", "g"],
-["كما تدين تدان", "What goes around comes around.", "", "g"],
-["رب ضارة نافعة", "Every cloud has a silver lining.", "", "g"],
-["مصائب قوم عند قوم فوائد", "One man's loss is another man's gain.", "", "g"],
-["لا تؤجل عمل اليوم إلى الغد", "Never put off till tomorrow what you can do today.", "", "g"],
-["اللي فات مات", "Let bygones be bygones.", "", "g"],
-["الغريق يتعلق بقشة", "A drowning man will clutch at a straw.", "", "g"],
-["السكوت علامة الرضا", "Silence gives consent.", "", "g"],
-["في بلاد العميان الأعور ملك", "In the land of the blind, the one-eyed man is king.", "", "g"],
-["عادت حليمة لعادتها القديمة", "A leopard can't change its spots.", "", "g"],
-["من شب على شيء شاب عليه", "≈ Old habits die hard.", "Whatever a person grows up doing stays with them in old age.", "g"],
-["إن كنت كذوباً فكن ذكوراً", "A liar needs a good memory.", "", "g"],
-["من كان بيته من زجاج فلا يرمي الناس بالحجارة", "People who live in glass houses shouldn't throw stones.", "", "g"],
-["القرش الأبيض ينفع في اليوم الأسود", "Save for a rainy day.", "", "g"],
-["الأقربون أولى بالمعروف", "Charity begins at home.", "", "g"],
-["من حفر حفرة لأخيه وقع فيها", "Whoever digs a pit will fall into it.", "", "g"],
-["الشمس لا تغطى بغربال", "≈ The truth will out.", "You can't hide the sun with a sieve; the truth cannot be concealed.", "g"],
-["ما بعد الضيق إلا الفرج", "≈ It's always darkest before the dawn.", "After hardship comes relief.", "g"],
-["يد واحدة ما تصفق", "≈ Many hands make light work.", "One hand can't clap; big things need teamwork.", "g"],
-["اللي يعيش ياما يشوف", "≈ Live and learn.", "Whoever lives long sees many things.", "g"],
-["إذا هبت رياحك فاغتنمها", "≈ Make hay while the sun shines.", "When your winds blow, seize the chance.", "g"],
-["لكل مقام مقال", "≈ There's a time and a place for everything.", "Every situation calls for its own words.", "g"],
-["لكل جواد كبوة", "≈ Even Homer sometimes nods.", "Even the best horse stumbles; everyone slips up.", "g"],
-["ما كل بيضاء شحمة ولا كل سوداء فحمة", "≈ Don't judge a book by its cover.", "Not every white thing is fat, nor every black thing coal; looks can deceive.", "g"],
-["الأعمال بالنيات", "≈ It's the thought that counts.", "Deeds are judged by the intentions behind them.", "g"],
-["القافلة تسير والكلاب تنبح", "", "Ignore the critics and keep moving forward.", "g"],
-["اطلب العلم ولو في الصين", "", "Seek knowledge even if you must travel as far as China.", "g"],
-["أنا وأخي على ابن عمي وأنا وابن عمي على الغريب", "", "Loyalty goes to the closest bond first: me and my brother against my cousin, me and my cousin against the stranger.", "s"],
-["ضربني وبكى وسبقني واشتكى", "", "Someone does wrong, then plays the victim and complains first.", "g"]
+// [arabic, type (m exact / c close / o meaning only), english, meaning, tag (c common / g gulf)]
+var D=[
+["ابن البط عوام","m","Like father, like son. / A chip off the old block.","","c"],
+["إذا كان الكلام من فضة فالسكوت من ذهب","m","Speech is silver, silence is golden.","","c"],
+["إذا هبت رياحك فاغتنمها","c","Make hay while the sun shines.","When your winds blow, seize the chance.","c"],
+["اسأل مجرّب ولا تسأل طبيب","c","Experience is the best teacher.","Ask someone who has been through it rather than an expert.","c"],
+["اطلب العلم ولو في الصين","o","Seek knowledge even if you must travel as far as China.","","c"],
+["الأعمال بالنيات","c","It’s the thought that counts.","Deeds are judged by the intentions behind them.","c"],
+["الأفعال أقوى من الكلام","m","Actions speak louder than words.","","c"],
+["الأقربون أولى بالمعروف","m","Charity begins at home.","","c"],
+["اللي فات مات","m","Let bygones be bygones.","","c"],
+["اللي ما له كبير يشتري له كبير","o","Everyone needs an elder or wise guide; if you don’t have one, find one.","","g"],
+["اللي ما يطول العنب حامض يقول عنه","m","Sour grapes.","","g"],
+["اللي ما يعرف الصقر يشويه","o","Someone who doesn’t recognize the value of something treats it carelessly or ruins it.","","g"],
+["اللي ما يعرف يقول عدس","o","A clueless person blurts out a random answer instead of admitting he doesn’t know.","","g"],
+["اللي يبي الورد يتحمل الشوك","m","No pain, no gain. / There’s no rose without a thorn.","","g"],
+["اللي يخاف من الذيب ما يرعى الغنم","m","If you can’t stand the heat, get out of the kitchen.","","g"],
+["اللي يعيش ياما يشوف","c","Live and learn.","Whoever lives long sees many things.","c"],
+["إن كنت كذوباً فكن ذكوراً","m","A liar needs a good memory.","","c"],
+["أنا وأخي على ابن عمي وأنا وابن عمي على الغريب","o","Loyalty goes to the closest bond first: me and my brother against my cousin, me and my cousin against the stranger.","","g"],
+["البعيد عن العين بعيد عن القلب","m","Out of sight, out of mind.","","c"],
+["جاء يكحلها عماها","c","The cure is worse than the disease.","He tried to fix it and made it worse.","g"],
+["الجار قبل الدار","o","Choose your neighbor before you choose your house.","","g"],
+["الجود من الموجود","o","Be generous with whatever you have; giving what is available is enough.","","g"],
+["الحاجة أم الاختراع","m","Necessity is the mother of invention.","","c"],
+["حبل الكذب قصير","o","Lies don’t last; they are soon exposed.","","c"],
+["الحر تكفيه الإشارة","m","A word to the wise is enough.","","c"],
+["خير الأمور أوسطها","m","Moderation in all things.","","c"],
+["درهم وقاية خير من قنطار علاج","m","An ounce of prevention is worth a pound of cure.","","c"],
+["الدنيا دوّارة","o","Life is a turning wheel; fortunes rise and fall.","","g"],
+["رب ضارة نافعة","m","Every cloud has a silver lining.","","c"],
+["السكوت علامة الرضا","m","Silence gives consent.","","c"],
+["الشمس لا تغطى بغربال","c","The truth will out.","You can’t hide the sun with a sieve; the truth cannot be concealed.","c"],
+["الصاحب ساحب","m","A man is known by the company he keeps.","","g"],
+["الصبر مفتاح الفرج","c","Good things come to those who wait.","Patience is the key to relief.","c"],
+["الصديق وقت الضيق","m","A friend in need is a friend indeed.","","c"],
+["ضرب الحبيب زبيب","o","Criticism, or even a slap, from someone who loves you is easy to take, like eating raisins.","","g"],
+["ضربني وبكى وسبقني واشتكى","o","Someone does wrong, then plays the victim and complains first.","","c"],
+["الطمع يقل ما جمع","m","Grasp all, lose all.","","c"],
+["الطيور على أشكالها تقع","m","Birds of a feather flock together.","","c"],
+["عادت حليمة لعادتها القديمة","m","A leopard can’t change its spots.","","c"],
+["عصفور في اليد خير من عشرة على الشجرة","m","A bird in the hand is worth two in the bush.","","c"],
+["العلم في الصغر كالنقش على الحجر","c","What is learned in the cradle is carried to the grave.","What you learn when young stays with you, like carving on stone.","c"],
+["العين ما تعلى على الحاجب","o","You can’t rise above your superiors; know your place.","","g"],
+["الغريق يتعلق بقشة","m","A drowning man will clutch at a straw.","","c"],
+["في التأني السلامة وفي العجلة الندامة","m","Haste makes waste.","","c"],
+["في بلاد العميان الأعور ملك","m","In the land of the blind, the one-eyed man is king.","","c"],
+["القافلة تسير والكلاب تنبح","o","Ignore the critics and keep moving forward.","","c"],
+["القرد في عين أمه غزال","o","Parents see their own children as the most beautiful, whatever others think.","","c"],
+["القرش الأبيض ينفع في اليوم الأسود","m","Save for a rainy day.","","c"],
+["قل خيراً أو اصمت","m","If you can’t say something nice, don’t say anything at all.","","c"],
+["كثرة الطباخين تحرق الطبخة","m","Too many cooks spoil the broth.","","g"],
+["كما تدين تدان","m","What goes around comes around.","","c"],
+["لا تؤجل عمل اليوم إلى الغد","m","Never put off till tomorrow what you can do today.","","c"],
+["لا تقول فول حتى يصير في المكيول","m","Don’t count your chickens before they hatch.","","g"],
+["لكل جواد كبوة","c","Even Homer sometimes nods.","Even the best horse stumbles; everyone slips up.","c"],
+["لكل مقام مقال","c","There’s a time and a place for everything.","Every situation calls for its own words.","c"],
+["ما بعد الضيق إلا الفرج","c","It’s always darkest before the dawn.","After hardship comes relief.","c"],
+["ما كل بيضاء شحمة ولا كل سوداء فحمة","c","Don’t judge a book by its cover.","Not every white thing is fat, nor every black thing coal; looks can deceive.","c"],
+["ما كل ما يلمع ذهب","m","All that glitters is not gold.","","c"],
+["ما يحك جلدك مثل ظفرك","m","If you want something done right, do it yourself.","","g"],
+["مد رجولك على قد لحافك","m","Cut your coat according to your cloth.","","g"],
+["مصائب قوم عند قوم فوائد","m","One man’s loss is another man’s gain.","","c"],
+["المكتوب على الجبين لازم تشوفه العين","m","What will be, will be.","","c"],
+["من جدّ وجد ومن زرع حصد","c","Hard work pays off.","Whoever strives finds, and whoever sows reaps.","c"],
+["من حفر حفرة لأخيه وقع فيها","m","Whoever digs a pit will fall into it.","","c"],
+["من شب على شيء شاب عليه","c","Old habits die hard.","Whatever a person grows up doing stays with them in old age.","c"],
+["من كان بيته من زجاج فلا يرمي الناس بالحجارة","m","People who live in glass houses shouldn’t throw stones.","","c"],
+["من يزرع الشوك لا يحصد العنب","m","As you sow, so shall you reap.","","c"],
+["الوقت كالسيف إن لم تقطعه قطعك","c","Time and tide wait for no man.","Use your time well, or it works against you.","c"],
+["يا ما تحت السواهي دواهي","o","A calm surface can hide trouble underneath.","","c"],
+["يد واحدة ما تصفق","c","Many hands make light work.","One hand can’t clap; big things need teamwork.","c"]
 ];
-let L='all';
-const T={
-ar:{title:'قاموس الأمثال',sub:'قاموس إلكتروني للأمثال الشعبية، مرتّب أبجدياً، مع مرادف كل مثل بالإنجليزي أو معناه',search:'ابحث بالعربي أو الإنجليزي…',idx:'الفهرس الأبجدي',all:'الكل',rnd:'🎲 مثل عشوائي',rndLbl:'مثل عشوائي',n:'مثل',empty:'ما لقينا نتيجة',ex:'مطابق',cl:'قريب',no:'معنى فقط',lex:'المرادف بالإنجليزي',lcl:'أقرب مرادف',lno:'ما له مرادف — المعنى',mean:'المعنى',s:'سعودي / خليجي',g:'شائع',lg:'دليل الألوان',lgex:'مرادف إنجليزي يطابق المعنى والصياغة تقريباً',lgcl:'أقرب مرادف، لكنه ليس مطابقاً تماماً، فيُعرض معه المعنى',lgno:'ما له مرادف إنجليزي، فنكتفي بشرح معناه',adm:'🔒 إضافة مثل (للمالك فقط)',pw:'كلمة المرور',tk:'رمز GitHub (أول مرة فقط)',nar:'المثل بالعربي',nen:'المرادف بالإنجليزي (ابدأه بـ ≈ إذا كان قريباً وغير مطابق، واتركه فاضي إذا ما له مرادف)',nmn:'المعنى بالإنجليزي (مطلوب إذا ما له مرادف)',nty:'النوع',sv:'حفظ ونشر',role:'مترجم لغة إنجليزية · English Language Translator',tg:'جسرٌ بين لسانين، ومعنى يعبر بينهما · A bridge between two tongues',sw:'EN',m1:'عبّ كلمة المرور والمثل والمرادف أو المعنى',m2:'هذا المثل موجود',m3:'جاري الحفظ…',m4:'كلمة المرور خاطئة',m5:'أدخل رمز GitHub (أول مرة فقط)',m6:'رمز GitHub غير صحيح أو ما له صلاحية',m7:'تعذر الاتصال (',m8:'فشل الحفظ (',m9:'تم ✅ يظهر للجميع بعد دقيقة تقريباً',m10:'صار خطأ: '},
-en:{title:'Arabic Proverbs Dictionary',sub:'An electronic dictionary of Arabic proverbs, in alphabetical order, with the closest English equivalent or the meaning of each',search:'Search in Arabic or English…',idx:'ALPHABETICAL INDEX (ARABIC LETTERS)',all:'All',rnd:'🎲 Random proverb',rndLbl:'Random proverb',n:'proverbs',empty:'No results found',ex:'Exact',cl:'Close',no:'Meaning only',lex:'English equivalent',lcl:'Closest equivalent',lno:'No equivalent — meaning',mean:'Meaning',s:'Saudi / Gulf',g:'Common',lg:'COLOR GUIDE',lgex:'An English proverb that closely matches the meaning and wording',lgcl:'The closest equivalent, not an exact match, so the meaning is shown too',lgno:'No English equivalent exists, so only the meaning is explained',adm:'🔒 Add a proverb (owner only)',pw:'Password',tk:'GitHub token (first time only)',nar:'Proverb in Arabic',nen:'English equivalent (start with ≈ if close but not exact; leave empty if none)',nmn:'Meaning in English (required if no equivalent)',nty:'Type',sv:'Save & publish',role:'English Language Translator',tg:'A bridge between two tongues',sw:'العربية',m1:'Fill in the password, the proverb, and the equivalent or meaning',m2:'This proverb already exists',m3:'Saving…',m4:'Wrong password',m5:'Enter the GitHub token (first time only)',m6:'GitHub token is invalid or lacks permission',m7:'Connection failed (',m8:'Save failed (',m9:'Done ✅ It will appear for everyone in about a minute',m10:'An error occurred: '}
+
+var T={
+ar:{dir:"rtl",title:"قاموس الأمثال العربية",ph:"ابحث في الأمثال…",rnd:"🎲 مثل عشوائي",sw:"🌐 تغيير اللغة",n:" مثل",none:"لا توجد نتائج",
+ m:"✓ مطابق",c:"⚠ قريب",o:"ⓘ معنى فقط",lm:"المرادف بالإنجليزي",lc:"أقرب مرادف",lo:"ما له مرادف — المعنى",lmean:"المعنى",tc:"شائع",tg:"سعودي / خليجي",leg:"دليل الألوان"},
+en:{dir:"ltr",title:"English Proverbs Dictionary",ph:"Search proverbs…",rnd:"🎲 Random proverb",sw:"🌐 Change language",n:" proverbs",none:"No results",
+ m:"✓ Exact",c:"⚠ Close",o:"ⓘ Meaning only",lm:"Arabic equivalent",lc:"Closest Arabic equivalent",lmean:"Meaning",tc:"Common",tg:"Saudi / Gulf",leg:"Colour guide"}
 };
-let lang='ar';
-function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v)}catch(e){return null}}
-const $=id=>document.getElementById(id);
-const kind=d=>!d[1]?'no':d[1][0]==='≈'?'cl':'ex';
-const skey=d=>{const n=norm(d[0]);return n.startsWith('اللي')?n:n.replace(/^ال/,'')};
-const ltr=d=>skey(d)[0];
-const srt=(a,b)=>a.localeCompare(b,'ar');
-function drawLetters(){
- const ls=[...new Set(D.map(ltr))].sort(srt);
- $('chips').innerHTML=['all',...ls].map(x=>`<button class="chip${x===L?' on':''}" data-c="${x}">${x==='all'?T[lang].all:x}
+var lang=null,$=function(i){return document.getElementById(i)};
+function norm(s){return s.replace(/[أإآ]/g,"ا").replace(/[ًٌٍَُِّْ]/g,"")}
+function letterAr(s){s=norm(s);return (s.replace(/^ال(?!لي)/,"")||s).charAt(0)}
+function letterEn(s){return s.replace(/^(a|an|the)\s+/i,"").charAt(0).toUpperCase()}
+function items(){
+  if(lang==="ar")return D.map(function(d){return{key:d[0],ty:d[1],other:d[2],mean:d[3],tg:d[4],l:letterAr(d[0])}});
+  return D.filter(function(d){return d[1]!=="o"}).map(function(d){return{key:d[2],ty:d[1],other:d[0],mean:d[3],tg:d[4],l:letterEn(d[2])}});
+}
+function esc(s){return s.replace(/[&<>]/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;"}[c]})}
+function card(x){
+  var t=T[lang],mine=lang==="ar"?"ar":"en",oth=lang==="ar"?"en":"ar";
+  var cls=x.ty==="m"?"ok":x.ty==="c"?"near":"mean";
+  var h='<div class="card"><div class="p '+mine+'">'+esc(x.key)+'</div><div><span class="badge '+cls+'">'+t[x.ty]+'</span><span class="tag">'+(x.tg==="g"?t.tg:t.tc)+'</span></div>';
+  if(lang==="ar"){
+    h+='<div class="row"><div class="lbl">'+(x.ty==="m"?t.lm:x.ty==="c"?t.lc:t.lo)+'</div><div class="eq en">'+esc(x.other)+'</div></div>';
+    if(x.ty==="c")h+='<div class="row"><div class="lbl">'+t.lmean+'</div><div class="en">'+esc(x.mean)+'</div></div>';
+  }else{
+    h+='<div class="row"><div class="lbl">'+(x.ty==="m"?t.lm:t.lc)+'</div><div class="eq ar">'+esc(x.other)+'</div></div>';
+    if(x.ty==="c")h+='<div class="row"><div class="lbl">'+t.lmean+'</div><div class="en">'+esc(x.mean)+'</div></div>';
+  }
+  return h+'</div>';
+}
+function render(){
+  var t=T[lang],q=norm($("q").value.trim().toLowerCase()),all=items();
+  var r=all.filter(function(x){return !q||norm((x.key+" "+x.other+" "+x.mean).toLowerCase()).indexOf(q)>-1});
+  r.sort(function(a,b){return lang==="ar"?a.key.localeCompare(b.key,"ar"):a.key.toLowerCase().localeCompare(b.key.toLowerCase())});
+  $("cnt").textContent=r.length+t.n;
+  var h="",last="",L=[];
+  r.forEach(function(x){if(x.l!==last){last=x.l;L.push(last);h+='<div class="letter" id="L'+L.length+'">'+last+'</div>'}h+=card(x)});
+  $("list").innerHTML=h||'<div class="empty">'+t.none+'</div>';
+  $("idx").innerHTML=L.map(function(l,i){return'<a href="#L'+(i+1)+'">'+l+'</a>'}).join("");
+}
+function setLang(l){
+  lang=l;var t=T[l];
+  document.documentElement.lang=l;document.documentElement.dir=t.dir;
+  $("land").classList.add("hide");$("app").classList.remove("hide");
+  $("title").textContent=t.title;$("q").placeholder=t.ph;$("q").value="";
+  $("rnd").textContent=t.rnd;$("sw").textContent=t.sw;
+  $("leg").innerHTML='<b>'+t.leg+'</b><span class="ok">'+t.m+'</span><span class="near">'+t.c+'</span>'+(l==="ar"?'<span class="mean">'+t.o+'</span>':'');
+  try{localStorage.setItem("lang",l)}catch(e){}
+  render();window.scrollTo(0,0);
+}
+var src="ar",tgt="en";
+function other(l){return l==="ar"?"en":"ar"}
+function paintSel(){document.querySelectorAll("#segS button").forEach(function(b){b.classList.toggle("on",b.dataset.v===src)});document.querySelectorAll("#segT button").forEach(function(b){b.classList.toggle("on",b.dataset.v===tgt)})}
+document.querySelectorAll("#segS button").forEach(function(b){b.onclick=function(){src=b.dataset.v;tgt=other(src);paintSel()}});
+document.querySelectorAll("#segT button").forEach(function(b){b.onclick=function(){tgt=b.dataset.v;src=other(tgt);paintSel()}});
+$("swapL").onclick=function(){var s=src;src=tgt;tgt=s;paintSel()};
+$("go").onclick=function(){setLang(src)};
+$("flip").onclick=function(){setLang(other(lang))};
+paintSel();
+$("q").oninput=render;
+$("sw").onclick=function(){$("app").classList.add("hide");$("land").classList.remove("hide");document.documentElement.dir="rtl";document.documentElement.lang="ar";try{localStorage.removeItem("lang")}catch(e){}};
+$("rnd").onclick=function(){var a=items(),x=a[Math.floor(Math.random()*a.length)];$("q").value="";render();var cs=[].slice.call(document.querySelectorAll(".card"));for(var i=0;i<cs.length;i++){if(cs[i].querySelector(".p").textContent===x.key){cs[i].scrollIntoView({behavior:"smooth",block:"center"});cs[i].style.borderColor="var(--gold)";break}}};
+
+/* ===== Supabase: accounts, memory, add-proverb, review ===== */
+var SB_URL="https://ygoxqsniareahbwfwqaq.supabase.co",SB_KEY="sb_publishable_I2JxkE4qDaNLscUBSLK3DA_AqPdNKch",ADMIN="balbdly881@hotmail.com";
+var sb=null,me=null,prof=null,baseN=D.length;
+try{sb=window.supabase.createClient(SB_URL,SB_KEY)}catch(e){}
+function isAdmin(){return !!(me&&(me.email||"").toLowerCase()===ADMIN)}
+function modal(h){var m=$("mod");m.innerHTML='<div class="mbox"><button class="x" onclick="closeMod()">✕</button>'+h+'</div>';m.classList.remove("hide")}
+function closeMod(){$("mod").classList.add("hide")}
+$("mod").onclick=function(e){if(e.target===this)closeMod()};
+function msg(t,ok){var e=$("msg");if(e){e.textContent=t;e.className=ok?"ok":"bad"}}
+function authModal(mode){
+  var su=mode==="up";
+  modal('<h2>'+(su?"إنشاء حساب · Sign up":"تسجيل الدخول · Log in")+'</h2><input id="em" type="email" placeholder="البريد الإلكتروني · Email" autocomplete="email"><input id="pw" type="password" placeholder="كلمة المرور · Password (8+)" autocomplete="'+(su?"new-password":"current-password")+'"><div id="msg"></div><button class="btn pri full" id="ok">'+(su?"إنشاء الحساب":"دخول")+'</button><button class="btn full" id="alt">'+(su?"عندي حساب · Log in":"حساب جديد · Sign up")+'</button>');
+  $("alt").onclick=function(){authModal(su?"in":"up")};
+  $("ok").onclick=async function(){
+    if(!sb)return msg("لم يتم ربط Supabase بعد");
+    var em=$("em").value.trim(),pw=$("pw").value;
+    if(!em||pw.length<8)return msg("أدخل بريداً وكلمة مرور (8 أحرف على الأقل)");
+    var r=su?await sb.auth.signUp({email:em,password:pw}):await sb.auth.signInWithPassword({email:em,password:pw});
+    if(r.error)return msg(r.error.message);
+    if(su&&!r.data.session)return msg("تم! افتح بريدك واضغط رابط التأكيد ثم سجّل الدخول",1);
+    closeMod();
+  };
+}
+$("bIn").onclick=function(){authModal("in")};$("bUp").onclick=function(){authModal("up")};
+async function refreshUser(s){
+  me=s?s.user:null;prof=null;
+  $("menuBtn").classList.toggle("hide",!me);$("authBox").classList.toggle("hide",!!me);$("menu").classList.add("hide");
+  if(me){var r=await sb.from("profiles").select("*").eq("id",me.id).maybeSingle();prof=r.data}
+}
+async function loadApproved(){
+  var r=await sb.from("proverbs").select("*").eq("status","approved");
+  if(r.error)return;
+  D.length=baseN;
+  r.data.forEach(function(p){var a=p.src_lang==="ar";D.push([a?p.text:p.translation,p.match_type,a?p.translation:p.text,p.meaning||"","c"])});
+  if(lang)render();
+}
+if(sb){
+  sb.auth.onAuthStateChange(function(ev,s){setTimeout(function(){refreshUser(s)},0)});
+  sb.auth.getSession().then(function(r){refreshUser(r.data.session)});
+  loadApproved();
+}
+$("menuBtn").onclick=function(){
+  var m=$("menu");m.classList.toggle("hide");
+  if(!m.classList.contains("hide"))m.innerHTML=[["prof","الملف الشخصي · Profile"],["add","إضافة مثل · Add proverb"]].concat(isAdmin()?[["rev","مراجعة الأمثال · Review"]]:[]).concat([["con","التواصل · Contact"],["out","تسجيل الخروج · Log out"]]).map(function(x){return'<button data-a="'+x[0]+'">'+x[1]+'</button>'}).join("");
+};
+$("menu").onclick=function(e){var a=e.target.dataset.a;if(!a)return;this.classList.add("hide");({prof:profModal,add:addModal,rev:revModal,con:conModal,out:function(){sb.auth.signOut()}})[a]()};
+function conModal(){modal('<h2>التواصل · Contact</h2><p><a href="https://wa.me/966530703675" target="_blank" rel="noopener">💬 واتساب · WhatsApp</a></p><p><a href="mailto:balbdly881@hotmail.com">balbdly881@hotmail.com</a></p>')}
+function addModal(){
+  var o='<option value="ar">العربية</option><option value="en">English</option>';
+  modal('<h2>إضافة مثل</h2><label>لغة المثل</label><select id="ps">'+o+'</select><label>لغة المقابل</label><select id="pt">'+o+'</select><textarea id="px" placeholder="المثل · Proverb" maxlength="300"></textarea><select id="pm"><option value="m">✓ مقابل مطابق</option><option value="c">⚠ أقرب مرادف</option><option value="o">ⓘ معنى فقط (للأمثال العربية)</option></select><textarea id="pr" placeholder="المقابل أو المعنى · Equivalent / meaning" maxlength="300"></textarea><textarea id="pn" placeholder="شرح المعنى (للمرادف القريب) · Meaning" maxlength="300"></textarea>'+(prof?'':'<input id="nm" placeholder="الاسم · Name" maxlength="80"><input id="wk" placeholder="جهة العمل · Workplace" maxlength="80">')+'<div id="msg"></div><button class="btn pri full" id="sv">إرسال للمراجعة</button>');
+  $("pt").value="en";
+  $("ps").onchange=function(){$("pt").value=this.value==="ar"?"en":"ar"};
+  $("pt").onchange=function(){$("ps").value=this.value==="ar"?"en":"ar"};
+  $("sv").onclick=async function(){
+    var sl=$("ps").value,tl=$("pt").value,tx=$("px").value.trim(),tr=$("pr").value.trim(),mt=$("pm").value,mn=$("pn").value.trim();
+    if(sl===tl)return msg("اللغتان يجب أن تختلفا");
+    if(!tx||!tr)return msg("املأ المثل والمقابل");
+    if(sl==="en"&&mt==="o")return msg("«معنى فقط» متاح للأمثال العربية فقط");
+    if(!prof){
+      var nm=$("nm").value.trim(),wk=$("wk").value.trim();
+      if(!nm||!wk)return msg("أدخل الاسم وجهة العمل");
+      var pr=await sb.from("profiles").insert({id:me.id,name:nm,workplace:wk});
+      if(pr.error)return msg(pr.error.message);
+      prof={id:me.id,name:nm,workplace:wk};
+    }
+    var r=await sb.from("proverbs").insert({user_id:me.id,src_lang:sl,tgt_lang:tl,text:tx,translation:tr,match_type:mt,meaning:mn});
+    if(r.error)return msg(r.error.message);
+    msg("تم الإرسال، المثل الآن تحت المراجعة ✓",1);
+    $("px").value=$("pr").value=$("pn").value="";
+  };
+}
+async function profModal(){
+  var r=await sb.from("proverbs").select("*").eq("user_id",me.id).order("created_at",{ascending:false});
+  var g={pending:[],approved:[],rejected:[]},t={pending:"⏳ تحت المراجعة",approved:"✓ مؤكدة",rejected:"✗ مرفوضة"};
+  (r.data||[]).forEach(function(p){g[p.status].push(p)});
+  var h='<h2>الملف الشخصي</h2><div class="sub">'+esc(me.email)+(prof?' · '+esc(prof.name)+' · '+esc(prof.workplace):'')+'</div>';
+  Object.keys(g).forEach(function(k){h+='<h3>'+t[k]+' ('+g[k].length+')</h3>'+g[k].map(function(p){return'<div class="it">'+esc(p.text)+' ← '+esc(p.translation)+'</div>'}).join("")});
+  modal(h+'<button class="btn danger full" id="da">حذف الحساب</button>');
+  $("da").onclick=async function(){
+    if(!confirm("سيتم حذف حسابك وكل أمثالك نهائياً. متأكد؟"))return;
+    var x=await sb.rpc("delete_my_account");if(x.error)return alert(x.error.message);
+    await sb.auth.signOut();closeMod();loadApproved();
+  };
+}
+async function revModal(){
+  var r=await sb.from("proverbs").select("*,profiles(name,workplace)").eq("status","pending").order("created_at");
+  var d=r.data||[];
+  var h=d.map(function(p){return'<div class="it" id="r'+p.id+'"><b>'+esc(p.text)+'</b> ['+p.src_lang+'→'+p.tgt_lang+', '+p.match_type+']<br>'+esc(p.translation)+(p.meaning?'<br><i>'+esc(p.meaning)+'</i>':'')+'<br><span class="tag">'+esc(p.profiles?p.profiles.name+" · "+p.profiles.workplace:"")+'</span><div><button class="btn pri" data-id="'+p.id+'" data-s="approved">اعتماد</button> <button class="btn" data-id="'+p.id+'" data-s="rejected">رفض</button></div></div>'}).join("");
+  modal('<h2>مراجعة الأمثال ('+d.length+')</h2><div id="rv">'+(h||'<div class="empty">لا يوجد شيء للمراجعة</div>')+'</div>');
+  $("rv").onclick=async function(e){
+    var b=e.target;if(!b.dataset.id)return;
+    var u=await sb.from("proverbs").update({status:b.dataset.s}).eq("id",b.dataset.id);
+    if(u.error)return alert(u.error.message);
+    $("r"+b.dataset.id).remove();loadApproved();
+  };
+}
+</script>
+</body>
+</html>
